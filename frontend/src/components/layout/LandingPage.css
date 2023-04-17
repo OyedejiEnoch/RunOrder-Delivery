@@ -1,0 +1,47 @@
+.landing{
+    
+}
+
+.landingPage{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+  
+}
+
+.landingText{
+    font-family: 'Nunito', sans-serif;
+    font-weight: 700;
+    display: flex;
+    flex-direction: column;
+}
+.landingText span{
+    font-size: 16px;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 200;
+    margin-bottom: 10px;
+}
+
+
+
+@media (max-width:550px) {
+    .landingPage{
+        display: flex;
+        flex-direction: column-reverse;
+        gap: 30px;
+    }
+
+    .landingText{
+        font-size: 14px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .landingText h3{
+        font-size: 14px;
+    }
+    .landingText h1{
+        font-size: 42px;
+    }
+}

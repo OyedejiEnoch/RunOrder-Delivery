@@ -1,0 +1,14 @@
+.search input{
+    border: none;
+    outline: none;
+    width: 200px;
+    font-family: 'Roboto';
+    font-size: 12px;
+}
+.search button{
+color: #fff;
+}
+
+.search{
+    margin-top: 10px;
+}

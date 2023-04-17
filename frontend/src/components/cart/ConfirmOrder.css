@@ -1,0 +1,161 @@
+.cart-item {
+    margin: 1.8rem 0rem;
+    padding: 0rem 0.7rem;
+    display: flex;
+    align-items: center;
+
+
+}
+
+.link {
+    text-decoration: none;
+}
+
+.cartAdjust {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 100px;
+}
+
+.cartAdjustProduct {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+}
+
+.cartAdjustProduct img {
+    width: 80px;
+    height: 65px;
+}
+
+.cartAdjustProduct span {
+    font-size: 14px;
+    font-weight: 500;
+    color: rgb(165, 165, 165);
+}
+
+
+.cartAdjustPrice p {
+    font-size: 18px;
+    font-weight: 600;
+    color: #161616;
+}
+
+
+.cartAdjustQuantity button {
+    padding: 4px;
+    outline: none;
+    border-radius: 10px;
+    border: none;
+    background-color: #AA77ff;
+    color: #fff;
+    cursor: pointer;
+}
+
+.cartAdjustQuantity button:nth-last-of-type(2) {
+    background-color: #AA77ff;
+}
+
+.cartAdjustDelete {
+    display: flex;
+    justify-content: end;
+    color: red;
+    cursor: pointer;
+}
+
+
+#checkout_btn,
+.review-btn {
+    background-color: #03C988;
+    border-color: #03C988;
+    margin-top: 2rem;
+    border-radius: 5rem;
+}
+
+
+
+.order-summary-values {
+    float: right;
+    font-weight: bold;
+}
+
+.stockCounter input {
+    border: none;
+    width: 3rem;
+    text-align: center;
+}
+
+.orderSummary button {
+    padding: 15px;
+    width: 100%;
+    border: none;
+    border-radius: 10px;
+    color: #fff;
+    background: #AA77ff;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+
+#order_summary {
+    background-color: #edf1f1;
+    border: 1px solid #e3e3e3;
+    border-radius: 1rem;
+    padding: 2rem 1.5rem;
+}
+
+#order_summary h4 {
+    font-size: 18px;
+}
+
+
+.stockCounter input::-webkit-outer-spin-button,
+.stockCounter input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.form-control:disabled,
+.form-control[readonly] {
+    background-color: white;
+}
+
+
+
+
+@media (max-width:550px) {
+    .cartAdjust {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        gap: 35px;
+        padding: 10px;
+    }
+
+    .cartAdjustProduct img {
+        width: 50px;
+        height: 35px;
+        border-radius: 10px;
+    }
+
+    .cartAdjustPrice p {
+        font-size: 16px;
+        font-weight: 600;
+        color: #161616;
+        margin-right: 10px;
+    }
+
+
+    .orderSummary {
+        display: flex;
+        justify-content: center;
+    }
+
+    #order_summary {
+        width: 70%;
+    }
+}

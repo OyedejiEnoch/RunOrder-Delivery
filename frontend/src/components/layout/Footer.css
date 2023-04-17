@@ -1,0 +1,64 @@
+footer {
+    background-color: hsl(227, 91%, 9%);
+
+}
+
+.footer {
+    margin-top: 50px;
+    padding: 30px 50px;
+    color: #FFFBEB;
+}
+
+.footerContent {
+    display: flex;
+    justify-content: space-between;
+}
+
+.about hr {
+    width: 200px;
+}
+
+.about p {
+    font-size: 13px;
+    letter-spacing: 0.5px;
+    color: rgb(197, 195, 195);
+}
+
+/* .home p {
+    display: flex;
+    flex-direction: column;
+
+
+} */
+
+.social a {
+    gap: 10px;
+}
+
+.footer h1 {
+    font-size: 20px;
+    color: white;
+}
+
+.footer p {
+    font-size: 13px;
+    letter-spacing: 0.5px;
+    color: rgb(197, 195, 195);
+}
+
+.footer a {
+    padding: 5px;
+    color: #FFFBEB;
+}
+
+.copyRight {
+    margin-top: 40px;
+}
+
+@media (max-width:550px) {
+    .footer {
+        text-align: left;
+        margin-top: 20px;
+        padding: 30px 30px;
+    }
+}

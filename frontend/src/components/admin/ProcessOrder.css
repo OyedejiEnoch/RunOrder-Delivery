@@ -1,0 +1,111 @@
+.processOrderPage{
+    padding: 20px;
+}
+
+.cart-item {
+    margin: 1.8rem 0rem;
+    padding: 0rem 0.7rem;
+    display: flex;
+    align-items: center;
+
+
+}
+
+.link {
+    text-decoration: none;
+}
+
+.cartAdjust {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 100px;
+}
+
+.cartAdjustProduct {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+}
+
+.cartAdjustProduct img {
+    width: 80px;
+    height: 65px;
+}
+
+.cartAdjustProduct span {
+    font-size: 14px;
+    font-weight: 500;
+    color: rgb(165, 165, 165);
+}
+
+
+.cartAdjustPrice p {
+    font-size: 18px;
+    font-weight: 600;
+    color: #161616;
+}
+
+
+
+
+.cartAdjustQuantity button:nth-last-of-type(2) {
+    background-color: #AA77ff;
+}
+
+.updateOrder .form-group{
+    outline: none;
+}
+
+.updateOrder button{
+    margin-top: 20px;
+    padding: 15px;
+    width: 100%;
+    border: none;
+    border-radius: 10px;
+    color: #fff;
+    background: #AA77ff;
+    font-size: 16px;
+    font-weight: 600;
+
+}
+
+
+.agentForm{
+    margin-top: 40px;
+}
+
+
+.agentFormFill{
+    width:110%;
+    padding: 20px;
+}
+
+
+
+@media (max-width:550px) {
+    .cartAdjust {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        gap: 35px;
+        padding: 10px;
+    }
+
+    .cartAdjustProduct img {
+        width: 50px;
+        height: 35px;
+        border-radius: 10px;
+    }
+
+    .cartAdjustPrice p {
+        font-size: 16px;
+        font-weight: 600;
+        color: #161616;
+        margin-right: 10px;
+    }
+
+}

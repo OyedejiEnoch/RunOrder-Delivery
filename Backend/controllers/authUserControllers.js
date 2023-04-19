@@ -47,7 +47,7 @@ exports.loginUser = catchAsyncErrors(async (req, res, next) => {
 
     //check if email and password is not entered by user
     if (!email || !password) {
-        return next(new ErrorHandler("Please enter email & password"), 400)
+        return next(new ErrorHandler("Please enter email & password", 400))
     }
 
     // fining the user details in the database

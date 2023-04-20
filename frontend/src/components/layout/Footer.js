@@ -1,5 +1,4 @@
 import React, { Fragment } from "react";
-import { Link } from "react-router-dom";
 import "./Footer.css"
 
 function Footer() {
@@ -17,7 +16,7 @@ function Footer() {
                                 a wide range of delivery for students and the oppturnity of students volunteering as agents</p>
                         </div>
 
-                        <div class="col-lg-4 col-md-6 col-sm-12 social">
+                        <div className="col-lg-4 col-md-6 col-sm-12 social">
                             <h1>Follow us on </h1>
                             <a><i className="fa-brands fa-instagram"></i> </a>
                             <a><i className="fa-brands fa-twitter"></i></a>
@@ -27,7 +26,7 @@ function Footer() {
 
 
                     <p className="text-center copyRight ">
-                        Run Order -{date}, || TechWorksNexus, All Rights Reserved
+                        RunOrder -{date}, || TechWorksNexus, All Rights Reserved
                     </p>
                 </div>
             </footer>

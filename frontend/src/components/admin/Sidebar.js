@@ -63,7 +63,7 @@ function Sidebar() {
 
                             { user && user.role !=="admin" && user.role !=="team" && user.role !=="DoublePortion" ? null :
                             (<li>
-                                <Link to="/admin/doublePortion"><i class="fa-solid fa-cart-shopping"></i> DoublePortion</Link>
+                                <Link to="/admin/doublePortion"><i class="fa-solid fa-cart-shopping"></i>DoublePortion</Link>
                             </li>)}
 
                             { user && user.role !=="admin" && user.role !=="team" && user.role !=="NationalKitchen" ? null :

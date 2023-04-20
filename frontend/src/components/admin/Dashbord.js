@@ -57,7 +57,7 @@ function Dashboard() {
 
                  <div className="offcanvas offcanvas-start" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
                     <div className="offcanvas-header">
-                     <p className="adminName">Welcome <i class="fa-solid fa-hand-wave fa-beat-fade"></i> <span>{user && user.name} </span></p>
+                     <p className="adminName"><i class="fa-solid fa-hand-wave fa-beat-fade"></i> <span>{user && user.name} </span></p>
                     <button type="button" className="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                 
                     </div>

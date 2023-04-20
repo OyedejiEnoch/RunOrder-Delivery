@@ -629,4 +629,15 @@ a[data-toggle='collapse'] {
     .agentsForm{
        flex-direction: column;
     }
+
+    .access{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .accessImg{
+        width: 60%;
+        
+    }
 }

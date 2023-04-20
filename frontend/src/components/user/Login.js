@@ -52,9 +52,9 @@ function Login() {
                 <Fragment>
                     <MetaData title={"Login"} />
 
-                    <div className="row wrapper">
-                        <div className="col-lg-6">
-                            <img src="./images/undraw_access_account_re_8spm.svg" width="80%" />
+                    <div className="row wrapper ">
+                        <div className="col-lg-6 access">
+                            <img src="./images/undraw_access_account_re_8spm.svg" width="80%"  className="accessImg"/>
                         </div>
                         <div className="col-lg-6 col-lg-5">
                             <form className="shadow-lg" onSubmit={handleSubmit}>

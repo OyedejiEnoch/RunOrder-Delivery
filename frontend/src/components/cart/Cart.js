@@ -62,7 +62,7 @@ function Cart() {
 
 
                                             <div className="cartAdjustPrice">
-                                                <p ><i class="fa-solid fa-naira-sign"></i> {item.price}</p>
+                                            <i class="fa-solid fa-naira-sign"></i> <p className="price" > {item.price}</p>
                                             </div>
 
 

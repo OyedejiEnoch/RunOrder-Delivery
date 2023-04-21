@@ -132,8 +132,18 @@
         flex-direction: row;
         align-items: center;
         justify-content: space-between;
-        gap: 35px;
+        gap: 25px;
         padding: 10px;
+    }
+
+    .cartAdjustQuantity{
+        display: flex;
+        
+    }
+
+    .cartAdjustQuantity button {
+        padding: 2px;
+        border-radius: 5px;
     }
 
     .cartAdjustProduct img {
@@ -142,8 +152,8 @@
         border-radius: 10px;
     }
 
-    .cartAdjustPrice p {
-        font-size: 16px;
+    .price {
+        font-size: 12px;
         font-weight: 600;
         color: #161616;
         margin-right: 10px;

@@ -63,7 +63,7 @@ function Header() {
                                         <span onClick={() => setOpen(!open)}><i className="fa-solid fa-bars"></i></span>
                                     </div>
 
-                                ) : !loading && <Link to="/login" id="login_btn" className="link">Login/ Register</Link>}
+                                ) : !loading && <Link to="/login" id="login_btn" className="link"><span className="headerLogin">Login/Register</span></Link>}
 
                             {open &&
                                 (<div className="options">

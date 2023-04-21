@@ -266,7 +266,7 @@ footer {
     color: #fff;
 }
 
-.triangle-active {
+/* .triangle-active {
     float: left;
     width: 0;
     border-top: 20px solid transparent;
@@ -274,7 +274,7 @@ footer {
     border-bottom: 20px solid transparent;
     margin-left: -1px;
 
-}
+} */
 
 .triangle2-active {
     width: 0;

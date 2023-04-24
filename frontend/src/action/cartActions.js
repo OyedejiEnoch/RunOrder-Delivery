@@ -7,7 +7,7 @@ axios.defaults.withCredentials = true;
 
 
 export const addItemToCart = (id, quantity) => async (dispatch, getState) => {
-    const { data } = await axios.get(`/api/v1/products/${id}`)
+    const { data } = await newRequest.get(`/api/v1/products/${id}`)
 
     dispatch({
         type: ADD_TO_CART,

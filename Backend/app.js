@@ -11,7 +11,7 @@ const errorMiddleWares = require("./middleWares/errors")
 
 // set up the CORS policy
 const corsOptions = {
-  origin: 'https://runorder.store', // replace with your front-end URL
+  origin: 'http://localhost:3000/', // replace with your front-end URL
   credentials: true, // enable sending cookies and other authentication data
 };
 

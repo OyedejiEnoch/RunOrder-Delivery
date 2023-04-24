@@ -1,4 +1,5 @@
 import axios from "axios"
+import newRequest from "../utils/newRequest";
 import {
     NEW_AGENTSORDER_REQUEST,
     NEW_AGENTSORDER_SUCCESS,
@@ -21,7 +22,7 @@ export const getAgentsForm = (currentPage = 1) => async (dispatch) => {
         //this will perform the get request in the productreducers
         dispatch({ type: ALL_AGENTSORDER_REQUEST})
         //then get all data 
-        const { data } = await axios.get(`/api/v1/admin/agentsForm?page=${currentPage}`)
+        const { data } = await newRequest.get(`/api/v1/admin/agentsForm?page=${currentPage}`)
         //then get the success and pass the data
         dispatch({
             type: ALL_AGENTSORDER_SUCCESS,
@@ -45,10 +46,11 @@ export const newAgentForm = (agentData) => async (dispatch) => {
         const config = {
             headers: {
                 "Content-Type": "application/json"
-            }
+            },
+            withCredentials:true
         }
 
-        const { data } = await axios.post(`/api/v1/admin/agentsForm/new`, agentData, config)
+        const { data } = await newRequest.post(`/api/v1/admin/agentsForm/new`, agentData, config)
 
         dispatch({
             type: NEW_AGENTSORDER_SUCCESS,
@@ -72,7 +74,7 @@ export const deleteAgentForm = (id) => async (dispatch) => {
 
 
 
-        const { data } = await axios.delete(`/api/v1/admin/agentsForm/${id}`)
+        const { data } = await newRequest.delete(`/api/v1/admin/agentsForm/${id}`)
 
         dispatch({
             type:DELETE_AGENTSORDER_SUCCESS,

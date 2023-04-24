@@ -1,4 +1,5 @@
 import axios from "axios"
+import newRequest from "../utils/newRequest"
 import {
     CREATE_ORDER_REQUEST,
     CREATE_ORDER_SUCCESS,
@@ -31,10 +32,11 @@ export const createOrder = (order) => async (dispatch, getState) => {
         const config = {
             headers: {
                 "content-Type": "application/json"
-            }
+            },
+            withCredentials:true
         }
 
-        const { data } = await axios.post("/api/v1/order/new", order, config, {withCredentials:true})
+        const { data } = await newRequest.post("/api/v1/order/new", order, config, {withCredentials:true})
         dispatch({
             type: CREATE_ORDER_SUCCESS,
             payload: data
@@ -54,7 +56,7 @@ export const myOrders = () => async (dispatch) => {
 
         dispatch({ type: MY_0RDERS_REQUEST });
 
-        const { data } = await axios.get('/api/v1/orders/me')
+        const { data } = await newRequest.get('/api/v1/orders/me')
 
         dispatch({
             type: MY_0RDERS_SUCCESS,
@@ -77,7 +79,7 @@ export const getOrderDetails = (id) => async (dispatch) => {
 
         dispatch({ type: ORDER_DETAILS_REQUEST });
 
-        const { data } = await axios.get(`/api/v1/order/${id}`)
+        const { data } = await newRequest.get(`/api/v1/order/${id}`)
 
         dispatch({
             type: ORDER_DETAILS_SUCCESS,
@@ -99,7 +101,7 @@ export const allOrders = () => async (dispatch) => {
 
         dispatch({ type: ALL_0RDERS_REQUEST });
 
-        const { data } = await axios.get(`/api/v1/admin/orders`)
+        const { data } = await newRequest.get(`/api/v1/admin/orders`)
 
         dispatch({
             type: ALL_0RDERS_SUCCESS,
@@ -124,10 +126,11 @@ export const updateOrder = (id, orderData) => async (dispatch) => {
         const config = {
             headers: {
                 "content-Type": "application/json"
-            }
+            },
+            withCredentials:true
         }
 
-        const { data } = await axios.put(`/api/v1/admin/orders/${id}`, orderData, config)
+        const { data } = await newRequest.put(`/api/v1/admin/orders/${id}`, orderData, config)
         dispatch({
             type: UPDATE_0RDERS_SUCCESS,
             payload: data.success
@@ -148,7 +151,7 @@ export const deleteOrder = (id) => async (dispatch) => {
         dispatch({ type: DELETE_0RDERS_REQUEST })
 
 
-        const { data } = await axios.delete(`/api/v1/admin/orders/${id}`)
+        const { data } = await newRequest.delete(`/api/v1/admin/orders/${id}`)
 
         dispatch({
             type: DELETE_0RDERS_SUCCESS,

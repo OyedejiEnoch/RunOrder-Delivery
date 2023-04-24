@@ -1,4 +1,5 @@
 import axios from "axios"
+import newRequest from "../utils/newRequest"
 import {
 
     NEW_FORM_REQUEST, 
@@ -22,7 +23,7 @@ export const getCafeteriaForm = (currentPage = 1) => async (dispatch) => {
         //this will perform the get request in the productreducers
         dispatch({ type: ALL_FROM_REQUEST})
         //then get all data 
-        const { data } = await axios.get(`/api/v1/admin/doublePortion?page=${currentPage}`)
+        const { data } = await newRequest.get(`/api/v1/admin/doublePortion?page=${currentPage}`)
         //then get the success and pass the data
         dispatch({
             type: ALL_FROM_SUCCESS,
@@ -46,10 +47,11 @@ export const newCafeteriaForm = (agentData) => async (dispatch) => {
         const config = {
             headers: {
                 "Content-Type": "application/json"
-            }
+            },
+            withCredentials:true
         }
 
-        const { data } = await axios.post(`/api/v1/admin/doublePortion/new`, agentData, config)
+        const { data } = await newRequest.post(`/api/v1/admin/doublePortion/new`, agentData, config)
 
         dispatch({
             type: NEW_FORM_SUCCESS,
@@ -73,7 +75,7 @@ export const deleteCafeteriaForm = (id) => async (dispatch) => {
 
 
 
-        const { data } = await axios.delete(`/api/v1/admin/doublePortion/${id}`)
+        const { data } = await newRequest.delete(`/api/v1/admin/doublePortion/${id}`)
 
         dispatch({
             type:DELETE_FORM_SUCCESS,

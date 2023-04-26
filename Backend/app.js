@@ -11,7 +11,7 @@ const errorMiddleWares = require("./middleWares/errors")
 
 // set up the CORS policy
 const corsOptions = {
-  origin: 'https://runorder.store', // replace with your front-end URL
+  origin: true, // replace with your front-end URL
   credentials: true, // enable sending cookies and other authentication data
 };
 
@@ -41,11 +41,11 @@ const healthchecker = require("./routes/healthchecker")
 
 
 app.get('/', (req, res) => {
-    res.status(200).json({
-        success: true,
+  res.status(200).json({
+    success: true,
 
-    })
   })
+})
 
 app.use("/api/v1", products)
 

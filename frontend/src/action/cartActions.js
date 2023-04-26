@@ -3,7 +3,7 @@ import axios from "axios";
 import newRequest from "../utils/newRequest";
 
 import { ADD_TO_CART, REMOVE_ITEM_CART, SAVE_SHIPPING_INFO } from "../constants/cartConstants";
-axios.defaults.withCredentials = true;
+
 
 
 export const addItemToCart = (id, quantity) => async (dispatch, getState) => {

@@ -4,8 +4,9 @@ import './App.css';
 import Header from './components/layout/Header';
 import Footer from './components/layout/Footer';
 import Home from './components/Home';
-import { toast, ToastContainer, } from "react-toastify"
+import { ToastContainer, } from "react-toastify"
 import ProductDetails from './components/product/ProductDetails';
+import DrinksDetails from './components/product/DrinksDetails';
 import Login from './components/user/Login';
 import Register from './components/user/Register';
 import { useSelector } from 'react-redux';
@@ -36,6 +37,8 @@ import { loadUser } from './action/userActions';
 import store from "./store"
 import ProductsList from './components/admin/ProductsList';
 import NewProduct from './components/admin/NewProduct';
+import DrinksList from './components/admin/DrinksLists';
+import NewDrinks from './components/admin/NewDrinks';
 import UpdateProduct from './components/admin/UpdateProduct';
 import OrderList from './components/admin/OrdersList';
 import ProcessOrders from './components/admin/ProcessOrders';
@@ -50,6 +53,8 @@ import DoublePortionForm from './components/admin/DoublePortionForm';
 import NationalKitchenForm from './components/admin/NationalKitchenForm';
 import MimiesForm from './components/admin/MimiesForm';
 import DivineHandsForm from './components/admin/DivineHandsForm';
+import UpdateDrinks from './components/admin/UpdateDrinks';
+import DrinksHome from './components/stores/Drinks';
 
 
 // import { useEffect } from 'react';
@@ -79,8 +84,9 @@ function App() {
 
         <Header />
         <Routes>
-          {/* <Route path='/' element={<LandingPage />} exact /> */}
-          <Route path='/' element={<Home />} exact />
+          <Route path='/' element={<LandingPage />} exact />
+          <Route path='/home' element={<Home />} exact />
+          <Route path='/drinks' element={<DrinksHome />} exact />
           <Route path='/search/:keyword' element={<Home />} />
         </Routes>
         <div className="container container-fluid homePage">
@@ -88,6 +94,7 @@ function App() {
 
 
             <Route path='/product/:id' element={<ProductDetails />} exact />
+            <Route path='/drinks/:id' element={<DrinksDetails />} exact />
             <Route path='/cart' element={<Cart />} exact />
             <Route path='/shipping' element={<ProtectedRoute><Shipping /></ProtectedRoute>} />
             <Route path='/order/confirm' element={<ProtectedRoute><ConfirmOrder /></ProtectedRoute>} />
@@ -117,7 +124,10 @@ function App() {
           <Route path='/dashbord' element={<ProtectedRoute isAdmin={true} ><Dashboard /></ProtectedRoute>} exact />
           <Route path='/admin/products' element={<ProtectedRoute isAdmin={true} ><ProductsList /></ProtectedRoute>} exact />
           <Route path='/admin/product' element={<ProtectedRoute isAdmin={true} ><NewProduct /></ProtectedRoute>} exact />
+          <Route path='/admin/drinks' element={<ProtectedRoute isAdmin={true} ><DrinksList /></ProtectedRoute>} exact />
+          <Route path='/admin/drink' element={<ProtectedRoute isAdmin={true} ><NewDrinks /></ProtectedRoute>} exact />
           <Route path='/admin/products/:id' element={<ProtectedRoute isAdmin={true} ><UpdateProduct /></ProtectedRoute>} exact />
+          <Route path='/admin/drinks/:id' element={<ProtectedRoute isAdmin={true} ><UpdateDrinks/></ProtectedRoute>} exact />
           <Route path='/admin/orders' element={<ProtectedRoute isAdmin={true} ><OrderList /></ProtectedRoute>} exact />
           <Route path='/admin/order/:id' element={<ProtectedRoute isAdmin={true} ><ProcessOrders /></ProtectedRoute>} exact />
           <Route path='/admin/users' element={<ProtectedRoute isAdmin={true} ><UsersList /></ProtectedRoute>} exact />

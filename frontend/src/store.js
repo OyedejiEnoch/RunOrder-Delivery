@@ -3,6 +3,7 @@ import thunk from "redux-thunk";
 import { composeWithDevTools } from "redux-devtools-extension"
 
 import { productsReducer, productDetailsReducer, newProductReducer, productReducer } from "./reducers/productReducers"
+import { allDrinksReducer, drinksDetailsReducer, newDrinkReducer, drinkReducer } from "./reducers/drinksReducer";
 import { authReducer, userReducer, forgotPasswordReducer, allUsersReducer, userDetailsReducer } from "./reducers/userReducers";
 import { cartReducer } from "./reducers/cartReducers";
 import { newOrderReducer, myOrdersReducer, orderDetailsReducer, allOrderReducer, orderReducer } from "./reducers/orderReducers"
@@ -18,6 +19,15 @@ import {newDivineHandsFormReducer, divineHandsFormReducer, divineHandsReducer } 
 const rootReducer = combineReducers({
     products: productsReducer,
     productDetails: productDetailsReducer,
+    newProduct: newProductReducer,
+    product: productReducer,
+
+    drinksProducts: allDrinksReducer,
+    drinksProductDetails: drinksDetailsReducer,
+    newDrinksProduct: newDrinkReducer,
+    drinksProduct: drinkReducer,
+
+
     auth: authReducer,
     user: userReducer,
     allUsers: allUsersReducer,
@@ -27,8 +37,7 @@ const rootReducer = combineReducers({
     newOrder: newOrderReducer,
     myOrders: myOrdersReducer,
     orderDetails: orderDetailsReducer,
-    newProduct: newProductReducer,
-    product: productReducer,
+    
     allOrders: allOrderReducer,
     order: orderReducer,
 

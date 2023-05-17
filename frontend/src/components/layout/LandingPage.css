@@ -1,28 +1,107 @@
-.landing{
+
+.landingPageSlider{
+    width: 100%;
+    height: 300px;
+}
+
+.landingPageSliderImg{
+    width: 100%;
+    object-fit: cover;
+    background-position: cover;
+}
+
+.landingPageCards{
+    display: flex;
+    align-items: center;
+    gap:20px;
+    justify-content: center;
+}
+
+.landingPageCard{
+    width:250px;
+    height:250px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    border: 1px solid #fff;
+    border-radius: 10px;
+    cursor:pointer;
+    overflow: hidden;
+    font-family: 'Poppins', sans-serif;
+    margin: 7px 0;
+    position: relative; 
+    transition: 0.8 ease;
     
 }
 
-.landingPage{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-direction: row;
-  
+
+.landingBackground{
+    background: linear-gradient(rgba(37, 32, 37, 0.774), rgba(2, 2, 2, 0.8)), url("../../../public/images/jollof.jpg");
+    background-size: cover;
+    background-position: center;
+    transition: 0.8s ease;
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+.landingBackground2{
+    background: linear-gradient(rgba(37, 32, 37, 0.774), rgba(2, 2, 2, 0.8)), url("../../../public/images/coke.jpg");
+    background-size: cover;
+    background-position: center;
+    transition: 0.8s ease;
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+.landingBackground3{
+    background: linear-gradient(rgba(37, 32, 37, 0.774), rgba(2, 2, 2, 0.8)), url("../../../public/images/toppings.jpg");
+    background-size: cover;
+    background-position: center;
+    transition: 0.8s ease;
+    width: 100%;
+    height: 100%;
+    position: relative;
 }
 
-.landingText{
-    font-family: 'Nunito', sans-serif;
-    font-weight: 700;
-    display: flex;
-    flex-direction: column;
+
+.landingPageCard:hover .landingBackground{
+    scale: 1.5;
 }
-.landingText span{
+.landingPageCard:hover .landingBackground2{
+    scale: 1.5;
+}
+.landingPageCard:hover .landingBackground3{
+    scale: 1.5;
+}
+
+.landingCardTitle{
+    position: absolute;
+    top: 10px;
+    left:10px;
+    color: #fff;
     font-size: 16px;
-    font-family: 'Nunito', sans-serif;
-    font-weight: 200;
-    margin-bottom: 10px;
+    font-weight: 500;
 }
 
+.landingPageButton{
+    position: absolute;
+    top: 150px;
+    left:65px;
+    width: 100%;
+    height: 100%;
+}
+
+.landingPageButton button{
+    border: 2px solid #fff;
+    padding: 0.5rem;
+    width: 8rem;
+    font-size: 14px;
+    background: transparent;
+    color: #fff;
+}
+
+.landingPageButton button:hover{
+    background-color: rgb(12, 12, 12);
+    color: #fff;
+}
 
 
 @media (max-width:550px) {
@@ -30,6 +109,11 @@
         display: flex;
         flex-direction: column-reverse;
         gap: 30px;
+    }
+
+    .landingPageCards{
+        display: flex;
+        flex-direction: column;
     }
 
     .landingText{

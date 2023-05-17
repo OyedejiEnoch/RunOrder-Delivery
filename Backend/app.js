@@ -27,6 +27,7 @@ app.use(fileupload());
 
 //import all routes
 const products = require("./routes/product")
+const drinks = require("./routes/drinks")
 const authUsers = require("./routes/authUser")
 const order = require("./routes/order")
 const agentsForm = require("./routes/agentForm")
@@ -48,6 +49,7 @@ app.get('/', (req, res) => {
 })
 
 app.use("/api/v1", products)
+app.use("/api/v1", drinks)
 
 app.use("/api/v1", authUsers)
 app.use("/api/v1", order)

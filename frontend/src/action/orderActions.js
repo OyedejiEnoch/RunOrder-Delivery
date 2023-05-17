@@ -115,6 +115,26 @@ export const allOrders = () => async (dispatch) => {
         })
     }
 }
+// Get all orders Admin => orders status still in Processing
+export const allProcessingOrders = () => async (dispatch) => {
+    try {
+
+        dispatch({ type: ALL_0RDERS_REQUEST });
+
+        const { data } = await newRequest.get(`/api/v1/admin/orders?orderStatus=Processing`)
+
+        dispatch({
+            type: ALL_0RDERS_SUCCESS,
+            payload: data
+        })
+
+    } catch (error) {
+        dispatch({
+            type: ALL_0RDERS_FAIL,
+            payload: error.response.data.message
+        })
+    }
+}
 
 
 // Update Order

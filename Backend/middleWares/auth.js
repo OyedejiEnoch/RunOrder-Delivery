@@ -9,7 +9,7 @@ exports.isAunthenticatedUser = catchAsyncErrors(async (req, res, next) => {
     const { token } = req.cookies
     // if token doesnt exist
     if (!token) {
-        return next(new ErrorHandler("Login first to access this resource", 401))
+        return next(new ErrorHandler("Login /Register to access this resource", 401))
 
     }
     // to verify if our token is correct or not /exist
@@ -17,7 +17,7 @@ exports.isAunthenticatedUser = catchAsyncErrors(async (req, res, next) => {
     // and if correct
     req.user = await User.findById(decoded.id);
     next()
-
+    // pass it on to the next middleware which is authorized roles
 })
 
 // Handling users roles

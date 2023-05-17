@@ -71,25 +71,41 @@ function OrderList() {
 
         orders.forEach(order => {
             data.rows.push({
-                numofItems: order.shippingInfo.address,
+               
+                numOfItems: order.shippingInfo.address,
                 amount: `N ${order.totalPrice - 200}`,
-                status: order.orderStatus && String(order.orderStatus).includes('Delivered')
-                    ? <p style={{ color: 'green' }}>{order.orderStatus}</p>
-                    : <p style={{ color: 'red' }}>{order.orderStatus}</p>,
-                actions: <Fragment>
-                    <Link to={`/admin/order/${order._id}`} className=" py-1 px-2">
-                        <i className="fa fa-eye"></i>
-                    </Link>
-                    <button style={{border:"none"}} className="delete py-1 px-2 ml-2" onClick={() => deleteOrderHandler(order._id)} >
-                    <i style={{color:"red" }} className="fa-sharp fa-solid fa-trash"></i>
-                    </button>
-                </Fragment>
+                Status: order.orderStatus && String(order.orderStatus).includes('Accepted')
+                ? <p style={{ color: 'green' }}>{order.orderStatus}</p>
+                : <p style={{ color: 'red' }}>{order.orderStatus}</p>,
+                actions:
+                <Fragment>
+                <Link to={`/admin/order/${order._id}`} className=" py-1 px-2">
+                    <i className="fa fa-eye"></i>
+                </Link>
+                <button style={{border:"none"}} className="delete py-1 px-2 ml-2" onClick={() => deleteOrderHandler(order._id)} >
+                <i style={{color:"red" }} className="fa-sharp fa-solid fa-trash"></i>
+                </button>
+            </Fragment>
             })
         })
 
+       
+        
         return data
     }
 
+
+    
+
+
+    // orders.forEach(order => {
+    //     data.rows.push({
+    //         numofItems: order.orderItems.length,
+    //         amount: `N ${order.totalPrice - 200}`,
+    //         status: order.shippingPrice,
+    //         actions:
+    //     })
+    // })
 
     return (
         <Fragment>

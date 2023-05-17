@@ -270,7 +270,7 @@ function Dashboard() {
                             {user && user.role !=="admin" && user.role !=="team"  ? null :
                         (<div className="barChart">
                         
-                        <CircularProgressbar value={value} maxValue={100} text={`${value}%`}  styles={buildStyles({
+                        <CircularProgressbar value={value.toFixed(2)} maxValue={100} text={`${value.toFixed(2)}%`}  styles={buildStyles({
                             textSize: '14px',
                             strokeWidth:"7",
                         })}/>;

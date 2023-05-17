@@ -29,6 +29,20 @@ function Sidebar() {
                             </li>
                         </ul>
                     </li>)}
+                    { user && user.role !== "admin" && user.role !== "team" ? null :
+                    (<li>
+                        <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample" className="dropdown-toggle"><i
+                            className="fa fa-product-hunt"></i> Drinks</a>
+                        <ul className="collapse list-unstyled collapse.show " id="collapseExample">
+                            <li>
+                                <Link to="/admin/drinks"><i className="fa fa-clipboard-list"></i> All</Link>
+                            </li>
+
+                            <li>
+                                <Link to="/admin/drink"><i className="fa fa-plus"></i> Create</Link>
+                            </li>
+                        </ul>
+                    </li>)}
               
 
                     <li>

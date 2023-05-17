@@ -53,8 +53,8 @@ function Cart() {
                                     <hr />
 
 
-                                    <div className="cart-item" key={item.product}>
-                                        <div className="cartAdjust">
+                                    <div className="cart-item" key={item.name}>
+                                        <div className="cartAdjust" key={item.product}>
                                             <div className="cartAdjustProduct">
                                                 <img src={item.image} alt="image" />
                                                 <Link className="link" to={`/product/${item.product}`}> <span>{item.name}</span></Link>
@@ -62,7 +62,7 @@ function Cart() {
 
 
                                             <div className="cartAdjustPrice">
-                                            <i class="fa-solid fa-naira-sign"></i>
+                                            <i className="fa-solid fa-naira-sign"></i>
                                              <span className="price" >{item.price}</span>
                                             </div>
 
@@ -93,7 +93,7 @@ function Cart() {
                                 <h4>Order Summary</h4>
                                 <hr />
                                 <p>Subtotal:  <span className="order-summary-values">{cartItems.reduce((acc, item) => (acc + Number(item.quantity)), 0)} (Units)</span></p>
-                                <p>Est. total: <span className="order-summary-values"><i class="fa-solid fa-naira-sign"></i> {cartItems.reduce((acc, item) => (acc + item.quantity * item.price), 0).toFixed(2)}</span></p>
+                                <p>Est. total: <span className="order-summary-values"><i className="fa-solid fa-naira-sign"></i> {cartItems.reduce((acc, item) => (acc + item.quantity * item.price), 0).toFixed(2)}</span></p>
 
                                 <hr />
                                 <button onClick={checkoutHandler}>Check out</button>

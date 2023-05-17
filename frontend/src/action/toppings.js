@@ -24,7 +24,7 @@ import {
 
 
     CLEAR_ERRORS
-} from "../constants/drinksConstants"
+} from "../constants/toppingsConstants"
 axios.defaults.withCredentials = true;
 
 
@@ -35,7 +35,7 @@ export const getProducts = (keyword = " ", currentPage = 1) => async (dispatch) 
         //this will perform the get request in the productreducers
         dispatch({ type: ALL_PRODUCTS_REQUEST })
         //then get all data 
-        const { data } = await newRequest.get(`/api/v1/drinks?keyword=${keyword}&page=${currentPage}`)
+        const { data } = await axios.get(`/api/v1/toppings?keyword=${keyword}&page=${currentPage}`)
         //then get the success and pass the data
         dispatch({
             type: ALL_PRODUCTS_SUCCESS,
@@ -58,7 +58,7 @@ export const getProductDetails = (id) => async (dispatch) => {
         //this will perform the get request in the productreducers
         dispatch({ type: PRODUCTS_DETAILS_REQUEST })
         //then get all data
-        const { data } = await newRequest.get(`/api/v1/products/${id}`)
+        const { data } = await axios.get(`/api/v1/products/${id}`)
         //then get the success and pass the data
         dispatch({
             type: PRODUCTS_DETAILS_SUCCESS,
@@ -80,7 +80,7 @@ export const getAdminProducts = (id) => async (dispatch) => {
 
         dispatch({ type: ADMIN_PRODUCTS_REQUEST })
 
-        const { data } = await newRequest.get(`/api/v1/admin/drinks`)
+        const { data } = await axios.get(`/api/v1/admin/toppings`)
 
         dispatch({
             type: ADMIN_PRODUCTS_SUCCESS,
@@ -109,7 +109,7 @@ export const newProduct = (productData) => async (dispatch) => {
             withCredentials:true
         }
 
-        const { data } = await newRequest.post(`/api/v1/admin/drinks/new`, productData, config, {withCredentials:true})
+        const { data } = await axios.post(`/api/v1/admin/toppings/new`, productData, config, {withCredentials:true})
 
         dispatch({
             type: NEW_PRODUCTS_SUCCESS,
@@ -132,7 +132,7 @@ export const deleteProduct = (id) => async (dispatch) => {
 
 
 
-        const { data } = await newRequest.delete(`/api/v1/admin/drinks/${id}`)
+        const { data } = await axios.delete(`/api/v1/admin/toppings/${id}`)
 
         dispatch({
             type: DELETE_PRODUCTS_SUCCESS,
@@ -163,7 +163,7 @@ export const updateProduct = (id, productData) => async (dispatch) => {
             withCredentials:true
         }
 
-        const { data } = await newRequest.put(`/api/v1/admin/drinks/${id}`, productData, config)
+        const { data } = await axios.put(`/api/v1/admin/toppings/${id}`, productData, config)
 
         dispatch({
             type: UPDATE_PRODUCTS_SUCCESS,

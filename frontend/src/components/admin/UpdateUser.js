@@ -137,7 +137,7 @@ const UpdateUser = () => {
                                         <option value="MannerPalace">MannerPalace</option>
                                         <option value="DoublePortion">DoublePortion</option>
                                         <option value="Numbers">Numbers</option>
-                                        <option value="Numbers">NationalKitchen</option>
+                                        <option value="NationalKitchen">NationalKitchen</option>
                                         <option value="Mimies">Mimies</option>
                                         <option value="DivineHands">DivineHands</option>
                                     </select>

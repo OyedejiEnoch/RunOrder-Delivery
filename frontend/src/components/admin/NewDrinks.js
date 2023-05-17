@@ -50,7 +50,7 @@ function NewDrinks() {
         }
 
         if (success) {
-            navigate("/admin/products")
+            navigate("/admin/drinks")
             toast.success("product created successfully")
             dispatch({ type: NEW_PRODUCTS_RESET })
         }

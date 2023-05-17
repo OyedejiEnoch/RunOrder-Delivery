@@ -3,7 +3,7 @@ import 'animate.css';
 import { Link } from "react-router-dom";
 import "./LandingPage.css"
 import { Carousel } from "react-bootstrap";
-import Body from "./Body";
+import 'animate.css';
 
 
 function LandingPage() {
@@ -25,7 +25,7 @@ function LandingPage() {
                 <div className="container">
                 <div className="landingPageCards">
 
-                <div className="landingPageCard">
+                <div className="landingPageCard animate__animated animate__fadeInLeft" >
                     <div className="landingBackground">
                     </div>
                     <span className="landingCardTitle" >Food</span>
@@ -36,7 +36,7 @@ function LandingPage() {
                         </div> 
                     </div>
 
-                    <div className="landingPageCard">
+                    <div className="landingPageCard animate__animated animate__fadeInUp">
                     <div className="landingBackground2">
                     </div>
 
@@ -48,7 +48,7 @@ function LandingPage() {
                         </div> 
                     </div>
 
-                    <div className="landingPageCard">
+                    <div className="landingPageCard animate__animated animate__fadeInUp">
                     <div className="landingBackground3">
                     </div>
                     <span className="landingCardTitle" >Toppings</span>

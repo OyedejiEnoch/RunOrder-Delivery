@@ -1,15 +1,15 @@
 import React, { Fragment, useState, useEffect, } from "react";
 import MetaData from "../layout/MetaData"
-import Drink from "../product/Drinks";
+import Topping from "../product/Toppings";
 import { useDispatch, useSelector } from "react-redux"
-import { getProducts } from "../../action/drinksActions";
+import { getProducts } from "../../action/toppings";
 import Loader from "../layout/Loader";
 import { toast, } from "react-toastify"
 import 'react-toastify/dist/ReactToastify.css';
 import Pagination from "react-js-pagination"
 import { useParams } from "react-router-dom";
 import Search from "../layout/Search";
-import "./Drinks.css"
+import "./Toppings.css"
 
 // import Slider from "rc-slider"
 // import 'rc-slider/assets/index.css';
@@ -17,7 +17,7 @@ import "./Drinks.css"
 // const { createSliderWithTooltip } = Slider
 // const Range = createSliderWithTooltip(Slider.Range)
 
-function DrinksHome() {
+function ToppingsHome() {
 
     const params = useParams()
     const [currentPage, setCurrentPage] = useState(1)
@@ -26,7 +26,7 @@ function DrinksHome() {
 
     const dispatch = useDispatch()
 
-    const { loading, products, error, productsCount, resPerPage } = useSelector(state => state.drinksProducts)
+    const { loading, products, error, productsCount, resPerPage } = useSelector(state => state.toppingsProducts)
 
     const keyword = params.keyword
 
@@ -71,7 +71,7 @@ function DrinksHome() {
                     <section id="products" className="container mt-5">
                         <div className="row">
                             {products && products.map(product => (
-                                <Drink key={product._id} product={product} />
+                                <Topping key={product._id} product={product} />
                             ))}
 
 
@@ -103,6 +103,6 @@ function DrinksHome() {
 
 
 
-export default DrinksHome
+export default ToppingsHome
 
 

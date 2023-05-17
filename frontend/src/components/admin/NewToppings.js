@@ -2,13 +2,15 @@ import React, { Fragment, useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import MetaData from "../layout/MetaData";
-import { updateProduct, getProductDetails, clearErrors } from "../../action/drinksActions";
-import { useNavigate, useParams } from "react-router-dom";
-import { UPDATE_PRODUCTS_RESET } from "../../constants/drinksConstants";
+import { newProduct, clearErrors } from "../../action/toppings";
+import { useNavigate } from "react-router-dom";
+import { NEW_PRODUCTS_RESET } from "../../constants/toppingsConstants";
 import Sidebar from "./Sidebar";
 
-function UpdateDrinks() {
-    let params = useParams()
+
+
+function NewToppings() {
+
     const [name, setName] = useState("");
     const [price, setPrice] = useState("");
     const [description, setDescription] = useState("");
@@ -16,7 +18,6 @@ function UpdateDrinks() {
     const [stock, setStock] = useState(0);
     const [seller, setSeller] = useState("");
     const [images, setImages] = useState([]);
-    const [oldImages, setOldImages] = useState([]);
     const [imagesPreview, setImagesPreview] = useState([]);
 
 
@@ -35,46 +36,26 @@ function UpdateDrinks() {
         'Home'
     ]
 
-
     const dispatch = useDispatch()
     let navigate = useNavigate()
-    const { error, product } = useSelector(state => state.drinksProductDetails)
-    const { loading, error: updateError, isUpdated } = useSelector(state => state.drinksProduct)
-
-    const productId = params.id
+    const { loading, error, success } = useSelector(state => state.newDrinksProduct)
 
 
     useEffect(() => {
 
-        if (product && product._id !== productId) {
-            dispatch(getProductDetails(productId))
-        } else {
-            setName(product.name)
-            setPrice(product.price)
-            setCategory(product.category)
-            setDescription(product.description)
-            setStock(product.stock)
-            setSeller(product.seller)
-            setOldImages(product.images)
-        }
 
         if (error) {
             toast.error(error);
             dispatch(clearErrors())
         }
 
-        if (updateError) {
-            toast.error(updateError);
-            dispatch(clearErrors())
+        if (success) {
+            navigate("/admin/toppings")
+            toast.success("product created successfully")
+            dispatch({ type: NEW_PRODUCTS_RESET })
         }
+    }, [dispatch, error, success])
 
-
-        if (isUpdated) {
-            navigate("/admin/drinks")
-            toast.success("product updated successfully")
-            dispatch({ type: UPDATE_PRODUCTS_RESET })
-        }
-    }, [dispatch, error, isUpdated, updateError, product, productId])
 
 
     function handleSubmit(event) {
@@ -92,7 +73,7 @@ function UpdateDrinks() {
             formData.append("images", image)
         })
 
-        dispatch(updateProduct(product._id, formData))
+        dispatch(newProduct(formData))
     }
 
     // to remove the stock seller 
@@ -103,7 +84,6 @@ function UpdateDrinks() {
 
         setImagesPreview([]);
         setImages([])
-        setOldImages([])
 
         files.forEach(file => {
             const reader = new FileReader();
@@ -124,9 +104,10 @@ function UpdateDrinks() {
     }
 
 
+
     return (
         <Fragment>
-            <MetaData title={"Update Products"} />
+            <MetaData title={"New Products"} />
             <div className="row">
             <div className="col-12 col-md-2">
                     <div className="sideBar">
@@ -154,7 +135,7 @@ function UpdateDrinks() {
                     <Fragment>
                         <div className="wrapper my-5">
                             <form className="shadow-lg" encType='multipart/form-data' onSubmit={handleSubmit}>
-                                <h1 className="mb-4">Update Product</h1>
+                                <h1 className="mb-4">New Product</h1>
 
                                 <div className="form-group">
                                     <label htmlFor="name_field">Name</label>
@@ -233,9 +214,6 @@ function UpdateDrinks() {
                                             Choose Images
                                         </label>
                                     </div>
-                                    {oldImages && oldImages.map(img => {
-                                        <img key={img} src={img.url} alt={img.url} className="mt-3 me-2" width="55" height="52" />
-                                    })}
 
                                     {imagesPreview.map(img => (
                                         <img src={img} key={img} alt="Images preview" className="mt-3 me-2"
@@ -250,7 +228,7 @@ function UpdateDrinks() {
                                     className="btn btn-block py-3"
                                     disabled={loading ? true : false}
                                 >
-                                    Update
+                                    CREATE
                                 </button>
 
                             </form>
@@ -265,6 +243,4 @@ function UpdateDrinks() {
     )
 }
 
-
-
-export default UpdateDrinks
+export default NewToppings;

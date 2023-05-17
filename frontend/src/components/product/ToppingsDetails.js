@@ -1,5 +1,5 @@
 import React, { Fragment, useEffect, useState } from "react";
-import { getProductDetails, clearErrors } from "../../action/productAction";
+import { getProductDetails, clearErrors } from "../../action/toppings";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import Loader from "../layout/Loader";
@@ -10,14 +10,14 @@ import { addItemToCart } from "../../action/cartActions";
 
 import "./ProductDetails.css"
 
-function ProductDetails() {
+function ToppingsDetails() {
 
     const [quantity, setQuantity] = useState(1)
 
     const params = useParams();
     const dispatch = useDispatch();
 
-    const { loading, error, product } = useSelector(state => state.productDetails)
+    const { loading, error, product } = useSelector(state => state.toppingsProductDetails)
 
     useEffect(() => {
         dispatch(getProductDetails(params.id))
@@ -103,7 +103,7 @@ function ProductDetails() {
                             <div className="productButton col-lg-6">
                                 <button
                                     disabled={product.stock === 0} onClick={addToCart}
-                                ><span ><i className="fa-solid fa-cart-shopping"></i></span>   Add to cart</button>
+                                ><span ><i class="fa-solid fa-cart-shopping"></i></span>   Add to cart</button>
                             </div>
 
                         </div>
@@ -117,5 +117,5 @@ function ProductDetails() {
 
 
 
-export default ProductDetails
+export default ToppingsDetails
 

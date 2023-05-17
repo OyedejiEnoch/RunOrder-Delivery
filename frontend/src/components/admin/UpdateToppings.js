@@ -2,12 +2,12 @@ import React, { Fragment, useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import MetaData from "../layout/MetaData";
-import { updateProduct, getProductDetails, clearErrors } from "../../action/drinksActions";
+import { updateProduct , getProductDetails, clearErrors} from "../../action/toppings";
 import { useNavigate, useParams } from "react-router-dom";
-import { UPDATE_PRODUCTS_RESET } from "../../constants/drinksConstants";
+import { UPDATE_PRODUCTS_RESET } from "../../constants/toppingsConstants";
 import Sidebar from "./Sidebar";
 
-function UpdateDrinks() {
+function UpdateToppings() {
     let params = useParams()
     const [name, setName] = useState("");
     const [price, setPrice] = useState("");
@@ -38,8 +38,8 @@ function UpdateDrinks() {
 
     const dispatch = useDispatch()
     let navigate = useNavigate()
-    const { error, product } = useSelector(state => state.drinksProductDetails)
-    const { loading, error: updateError, isUpdated } = useSelector(state => state.drinksProduct)
+    const { error, product } = useSelector(state => state.toppingsProductDetails)
+    const { loading, error: updateError, isUpdated } = useSelector(state => state.toppingsProduct)
 
     const productId = params.id
 
@@ -70,7 +70,7 @@ function UpdateDrinks() {
 
 
         if (isUpdated) {
-            navigate("/admin/drinks")
+            navigate("/admin/toppings")
             toast.success("product updated successfully")
             dispatch({ type: UPDATE_PRODUCTS_RESET })
         }
@@ -267,4 +267,4 @@ function UpdateDrinks() {
 
 
 
-export default UpdateDrinks
+export default UpdateToppings

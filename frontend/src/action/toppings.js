@@ -35,7 +35,7 @@ export const getProducts = (keyword = " ", currentPage = 1) => async (dispatch) 
         //this will perform the get request in the productreducers
         dispatch({ type: ALL_PRODUCTS_REQUEST })
         //then get all data 
-        const { data } = await axios.get(`/api/v1/toppings?keyword=${keyword}&page=${currentPage}`)
+        const { data } = await newRequest.get(`/api/v1/toppings`)
         //then get the success and pass the data
         dispatch({
             type: ALL_PRODUCTS_SUCCESS,
@@ -58,11 +58,11 @@ export const getProductDetails = (id) => async (dispatch) => {
         //this will perform the get request in the productreducers
         dispatch({ type: PRODUCTS_DETAILS_REQUEST })
         //then get all data
-        const { data } = await axios.get(`/api/v1/products/${id}`)
+        const { data } = await newRequest.get(`/api/v1/toppings/${id}`)
         //then get the success and pass the data
         dispatch({
             type: PRODUCTS_DETAILS_SUCCESS,
-            payload: data.product
+            payload: data.toppings
         })
 
     } catch (error) {
@@ -80,11 +80,11 @@ export const getAdminProducts = (id) => async (dispatch) => {
 
         dispatch({ type: ADMIN_PRODUCTS_REQUEST })
 
-        const { data } = await axios.get(`/api/v1/admin/toppings`)
+        const { data } = await newRequest.get(`/api/v1/admin/toppings`)
 
         dispatch({
             type: ADMIN_PRODUCTS_SUCCESS,
-            payload: data.products
+            payload: data.toppings
         })
 
     } catch (error) {
@@ -96,7 +96,7 @@ export const getAdminProducts = (id) => async (dispatch) => {
 }
 
 
-export const newProduct = (productData) => async (dispatch) => {
+export const newToppings = (productData) => async (dispatch) => {
     try {
 
         dispatch({ type: NEW_PRODUCTS_REQUEST })
@@ -109,7 +109,7 @@ export const newProduct = (productData) => async (dispatch) => {
             withCredentials:true
         }
 
-        const { data } = await axios.post(`/api/v1/admin/toppings/new`, productData, config, {withCredentials:true})
+        const { data } = await newRequest.post(`/api/v1/admin/toppings/new`, productData, config, {withCredentials:true})
 
         dispatch({
             type: NEW_PRODUCTS_SUCCESS,
@@ -132,7 +132,7 @@ export const deleteProduct = (id) => async (dispatch) => {
 
 
 
-        const { data } = await axios.delete(`/api/v1/admin/toppings/${id}`)
+        const { data } = await newRequest.delete(`/api/v1/admin/toppings/${id}`)
 
         dispatch({
             type: DELETE_PRODUCTS_SUCCESS,
@@ -150,7 +150,7 @@ export const deleteProduct = (id) => async (dispatch) => {
 
 
 //Update product admin
-export const updateProduct = (id, productData) => async (dispatch) => {
+export const updateToppings = (id, productData) => async (dispatch) => {
     try {
 
         dispatch({ type: UPDATE_PRODUCTS_REQUEST })
@@ -163,7 +163,7 @@ export const updateProduct = (id, productData) => async (dispatch) => {
             withCredentials:true
         }
 
-        const { data } = await axios.put(`/api/v1/admin/toppings/${id}`, productData, config)
+        const { data } = await newRequest.put(`/api/v1/admin/toppings/${id}`, productData, config)
 
         dispatch({
             type: UPDATE_PRODUCTS_SUCCESS,

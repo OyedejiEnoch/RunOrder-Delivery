@@ -29,7 +29,7 @@ export const allToppingsReducer = (state = { products: [] }, action) => {
         case ADMIN_PRODUCTS_REQUEST:
             return {
                 loading: true,
-                toppings: []
+                products: []
             }
         case ALL_PRODUCTS_SUCCESS:
             return {

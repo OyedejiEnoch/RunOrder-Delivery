@@ -29,20 +29,22 @@ axios.defaults.withCredentials = true;
 
 
 // we will firstly dispatch all products request which will set loading to true
-export const getProducts = (keyword = " ", currentPage = 1) => async (dispatch) => {
+export const getDrinksProducts = (keyword = " ", currentPage = 1) => async (dispatch) => {
 
     try {
         //this will perform the get request in the productreducers
         dispatch({ type: ALL_PRODUCTS_REQUEST })
         //then get all data 
-        const { data } = await newRequest.get(`/api/v1/drinks?keyword=${keyword}&page=${currentPage}`)
+        const { data } = await newRequest.get(`/api/v1/drinks`)
         //then get the success and pass the data
+        console.log(data)
         dispatch({
             type: ALL_PRODUCTS_SUCCESS,
             payload: data
         })
 
     } catch (error) {
+        console.log(error)
         dispatch({
             type: ALL_PRODUCTS_FAIL,
             payload: error.response.data.message
@@ -58,11 +60,11 @@ export const getProductDetails = (id) => async (dispatch) => {
         //this will perform the get request in the productreducers
         dispatch({ type: PRODUCTS_DETAILS_REQUEST })
         //then get all data
-        const { data } = await newRequest.get(`/api/v1/products/${id}`)
+        const { data } = await newRequest.get(`/api/v1/drinks/${id}`)
         //then get the success and pass the data
         dispatch({
             type: PRODUCTS_DETAILS_SUCCESS,
-            payload: data.product
+            payload: data.drinks
         })
 
     } catch (error) {
@@ -75,7 +77,7 @@ export const getProductDetails = (id) => async (dispatch) => {
 
 
 // to get products for admin routes
-export const getAdminProducts = (id) => async (dispatch) => {
+export const getAdminDrinks = (id) => async (dispatch) => {
     try {
 
         dispatch({ type: ADMIN_PRODUCTS_REQUEST })
@@ -84,7 +86,7 @@ export const getAdminProducts = (id) => async (dispatch) => {
 
         dispatch({
             type: ADMIN_PRODUCTS_SUCCESS,
-            payload: data.products
+            payload: data.drinks
         })
 
     } catch (error) {

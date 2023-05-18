@@ -10,7 +10,7 @@ const { isAunthenticatedUser, authorizedRoles } = require("../middleWares/auth")
 
 router.route("/drinks").get(getProducts);
 router.route("/admin/drinks").get(getAdminProducts);
-router.route("/products/:id").get(getSingleProduct);
+router.route("/drinks/:id").get(getSingleProduct);
 
 router.route("/admin/drinks/new").post(isAunthenticatedUser, authorizedRoles("admin", "team"), newProduct);
 router.route("/admin/drinks/:id")

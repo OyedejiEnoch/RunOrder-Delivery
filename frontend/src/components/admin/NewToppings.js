@@ -2,7 +2,7 @@ import React, { Fragment, useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import MetaData from "../layout/MetaData";
-import { newProduct, clearErrors } from "../../action/toppings";
+import { newToppings, clearErrors } from "../../action/toppings";
 import { useNavigate } from "react-router-dom";
 import { NEW_PRODUCTS_RESET } from "../../constants/toppingsConstants";
 import Sidebar from "./Sidebar";
@@ -38,7 +38,7 @@ function NewToppings() {
 
     const dispatch = useDispatch()
     let navigate = useNavigate()
-    const { loading, error, success } = useSelector(state => state.newDrinksProduct)
+    const { loading, error, success } = useSelector(state => state.newToppingsProduct)
 
 
     useEffect(() => {
@@ -73,7 +73,7 @@ function NewToppings() {
             formData.append("images", image)
         })
 
-        dispatch(newProduct(formData))
+        dispatch(newToppings(formData))
     }
 
     // to remove the stock seller 

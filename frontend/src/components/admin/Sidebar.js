@@ -17,7 +17,7 @@ function Sidebar() {
 
                     { user && user.role !== "admin" && user.role !== "team" ? null :
                     (<li>
-                        <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample" className="dropdown-toggle"><i
+                        <a class="btn btn-primary " data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample" className=" dropdown-toggle"><i
                             className="fa fa-product-hunt"></i> Products</a>
                         <ul className="collapse list-unstyled collapse.show " id="collapseExample">
                             <li>
@@ -31,7 +31,7 @@ function Sidebar() {
                     </li>)}
                     { user && user.role !== "admin" && user.role !== "team" ? null :
                     (<li>
-                        <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample3" role="button" aria-expanded="false" aria-controls="collapseExample" className="dropdown-toggle"><i
+                        <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample3" role="button" aria-expanded="false" aria-controls="collapseExample" className=" dropdown-toggle"><i
                             className="fa fa-product-hunt"></i> Drinks</a>
                         <ul className="collapse list-unstyled collapse.show " id="collapseExample3">
                             <li>
@@ -45,11 +45,11 @@ function Sidebar() {
                     </li>)}
                     { user && user.role !== "admin" && user.role !== "team" ? null :
                     (<li>
-                        <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample4" role="button" aria-expanded="false" aria-controls="collapseExample" className="dropdown-toggle"><i
+                        <a class="btn btn-primary " data-bs-toggle="collapse" href="#collapseExample4" role="button" aria-expanded="false" aria-controls="collapseExample" className="dropdown-toggle" ><i
                             className="fa fa-product-hunt"></i> Toppings</a>
                         <ul className="collapse list-unstyled collapse.show " id="collapseExample4">
                             <li>
-                                <Link to="/admin/topings"><i className="fa fa-clipboard-list"></i> All</Link>
+                                <Link to="/admin/toppings"><i className="fa fa-clipboard-list"></i> All</Link>
                             </li>
 
                             <li>
@@ -75,8 +75,8 @@ function Sidebar() {
 
 
                     <li>
-                        <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample2" role="button" aria-expanded="false" aria-controls="collapseExample" className="dropdown-toggle">
-                        <i class="fa-solid fa-house"></i>Cafeteria</a>
+                        <a class="btn btn-primary " data-bs-toggle="collapse" href="#collapseExample2" role="button" aria-expanded="false" aria-controls="collapseExample" className=" dropdown-toggle" >
+                        <i className="fa-solid fa-house"></i>Cafeteria</a>
                         <ul className="collapse list-unstyled collapse.show " id="collapseExample2">
 
                         { user && user.role !=="admin" && user.role !=="team" && user.role !=="MannerPalace" ? null :
@@ -86,17 +86,17 @@ function Sidebar() {
 
                             { user && user.role !=="admin" && user.role !=="team" && user.role !=="Numbers" ? null :
                             (<li>
-                                <Link to="/admin/numbersForm"><i class="fa-solid fa-cart-shopping"></i> Numbers</Link>
+                                <Link to="/admin/numbersForm"><i className="fa-solid fa-cart-shopping"></i> Numbers</Link>
                             </li>)}
 
                             { user && user.role !=="admin" && user.role !=="team" && user.role !=="DoublePortion" ? null :
                             (<li>
-                                <Link to="/admin/doublePortion"><i class="fa-solid fa-cart-shopping"></i>DoublePortion</Link>
+                                <Link to="/admin/doublePortion"><i className="fa-solid fa-cart-shopping"></i>DoublePortion</Link>
                             </li>)}
 
                             { user && user.role !=="admin" && user.role !=="team" && user.role !=="NationalKitchen" ? null :
                             (<li>
-                                <Link to="/admin/nationalKitchen"><i class="fa-solid fa-cart-shopping"></i>National Kitchen</Link>
+                                <Link to="/admin/nationalKitchen"><i className="fa-solid fa-cart-shopping"></i>National Kitchen</Link>
                             </li>)}
                             
                             { user && user.role !=="admin" && user.role !=="team" && user.role !=="Mimies" ? null :

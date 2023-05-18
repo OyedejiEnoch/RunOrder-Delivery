@@ -70,4 +70,4 @@ const toppingsSchema = new mongoose.Schema({
     }
 })
 
-module.exports = mongoose.model("Drinks", toppingsSchema)
+module.exports = mongoose.model("Topping", toppingsSchema)

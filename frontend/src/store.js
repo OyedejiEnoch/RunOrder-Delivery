@@ -3,7 +3,7 @@ import thunk from "redux-thunk";
 import { composeWithDevTools } from "redux-devtools-extension"
 
 import { productsReducer, productDetailsReducer, newProductReducer, productReducer } from "./reducers/productReducers"
-import { allDrinksReducer, drinksDetailsReducer, newDrinkReducer, drinkReducer } from "./reducers/drinksReducer";
+import { drinksReducer, drinkDetailsReducer, newDrinkReducer, drinkReducer } from "./reducers/drinksReducer";
 import { allToppingsReducer, toppingsDetailsReducer, newToppingsReducer, toppingsReducer } from "./reducers/toppingsReducers";
 
 import { authReducer, userReducer, forgotPasswordReducer, allUsersReducer, userDetailsReducer } from "./reducers/userReducers";
@@ -24,8 +24,8 @@ const rootReducer = combineReducers({
     newProduct: newProductReducer,
     product: productReducer,
 
-    drinksProducts: allDrinksReducer,
-    drinksProductDetails: drinksDetailsReducer,
+    drinksProducts: drinksReducer,
+    drinksProductDetails: drinkDetailsReducer,
     newDrinksProduct: newDrinkReducer,
     drinksProduct: drinkReducer,
 

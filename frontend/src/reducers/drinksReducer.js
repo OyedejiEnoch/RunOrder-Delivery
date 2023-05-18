@@ -23,19 +23,19 @@ import {
     CLEAR_ERRORS
 } from "../constants/drinksConstants"
 
-export const allDrinksReducer = (state = { products: [] }, action) => {
+export const drinksReducer = (state = { products: [] }, action) => {
     switch (action.type) {
         case ALL_PRODUCTS_REQUEST:
         case ADMIN_PRODUCTS_REQUEST:
             return {
                 loading: true,
-                drinks: []
+                products: []
             }
         case ALL_PRODUCTS_SUCCESS:
             return {
                 loading: false,
                 products: action.payload.drinks,
-                productsCount: action.payload.drinksCount,
+                productsCount: action.payload.drinkssCount,
                 resPerPage: action.payload.resPerPage
             }
 
@@ -63,7 +63,7 @@ export const allDrinksReducer = (state = { products: [] }, action) => {
     }
 }
 
-export const drinksDetailsReducer = (state = { product: {} }, action) => {
+export const drinkDetailsReducer = (state = { product: {} }, action) => {
     switch (action.type) {
 
         case PRODUCTS_DETAILS_REQUEST:

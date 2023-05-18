@@ -6,7 +6,7 @@ import Loader from "../layout/Loader";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import MetaData from "../layout/MetaData";
-import { getAdminProducts, clearErrors, deleteProduct } from "../../action/drinksActions";
+import { getAdminDrinks, clearErrors, deleteProduct } from "../../action/drinksActions";
 import Sidebar from "./Sidebar";
 import { DELETE_PRODUCTS_RESET } from "../../constants/drinksConstants";
 
@@ -22,7 +22,7 @@ function DrinksList() {
 
 
     useEffect(() => {
-        dispatch(getAdminProducts());
+        dispatch(getAdminDrinks());
 
         if (error) {
             toast.error(error);
@@ -34,7 +34,7 @@ function DrinksList() {
         }
         if (isDeleted) {
             toast.success("Product deleted successfully");
-            navigate("/admin/products")
+            navigate("/admin/drinks")
             dispatch({ type: DELETE_PRODUCTS_RESET })
         }
     }, [dispatch, error, deleteError, isDeleted])

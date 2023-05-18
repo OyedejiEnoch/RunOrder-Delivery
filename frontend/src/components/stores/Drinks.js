@@ -2,7 +2,7 @@ import React, { Fragment, useState, useEffect, } from "react";
 import MetaData from "../layout/MetaData"
 import Drink from "../product/Drinks";
 import { useDispatch, useSelector } from "react-redux"
-import { getProducts } from "../../action/drinksActions";
+import { getDrinksProducts } from "../../action/drinksActions";
 import Loader from "../layout/Loader";
 import { toast, } from "react-toastify"
 import 'react-toastify/dist/ReactToastify.css';
@@ -29,7 +29,7 @@ function DrinksHome() {
     const { loading, products, error, productsCount, resPerPage } = useSelector(state => state.drinksProducts)
 
     const keyword = params.keyword
-
+const name ="enoch"
     useEffect(() => {
         if (error) {
             toast.error('Error Notification !', {
@@ -38,8 +38,9 @@ function DrinksHome() {
 
         }
         // price
-        dispatch(getProducts(keyword, currentPage));
-
+        dispatch(getDrinksProducts(keyword, currentPage));
+        
+        console.log(name)
 
         // price
     }, [dispatch, error, keyword, currentPage])
@@ -49,8 +50,9 @@ function DrinksHome() {
     }
 
     return (
+        
         <Fragment>
-
+            
 
             <div className="headerHome">
 
@@ -68,6 +70,7 @@ function DrinksHome() {
 
                     <MetaData title={"Order to enjoy the experience"} />
                     <h1 id="products_heading">All Products</h1>
+                    {console.log(products)}
                     <section id="products" className="container mt-5">
                         <div className="row">
                             {products && products.map(product => (

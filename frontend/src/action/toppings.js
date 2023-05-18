@@ -53,7 +53,7 @@ export const getProducts = (keyword = " ", currentPage = 1) => async (dispatch) 
 
 
 // we will firstly dispatch all products request which will set loading to true
-export const getProductDetails = (id) => async (dispatch) => {
+export const getToppingsDetails = (id) => async (dispatch) => {
     try {
         //this will perform the get request in the productreducers
         dispatch({ type: PRODUCTS_DETAILS_REQUEST })
@@ -62,7 +62,7 @@ export const getProductDetails = (id) => async (dispatch) => {
         //then get the success and pass the data
         dispatch({
             type: PRODUCTS_DETAILS_SUCCESS,
-            payload: data.toppings
+            payload: data
         })
 
     } catch (error) {

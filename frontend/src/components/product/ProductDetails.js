@@ -33,8 +33,8 @@ function ProductDetails() {
 
 
     function addToCart() {
-        dispatch(addItemToCart(params.id, quantity))
-        toast.success("Item Added to Cart")
+        dispatch(addItemToCart(params.id, quantity, 'products'));
+        toast.success("Item Added to Cart");
     }
 
     function increaseQty() {

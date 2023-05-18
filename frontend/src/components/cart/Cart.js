@@ -54,7 +54,7 @@ function Cart() {
 
 
                                     <div className="cart-item" key={item.name}>
-                                        <div className="cartAdjust" key={item.product}>
+                                        <div className="cartAdjust" key={item.name}>
                                             <div className="cartAdjustProduct">
                                                 <img src={item.image} alt="image" />
                                                 <Link className="link" to={`/product/${item.product}`}> <span>{item.name}</span></Link>

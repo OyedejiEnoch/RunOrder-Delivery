@@ -2,7 +2,7 @@ import React, { Fragment, useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import MetaData from "../layout/MetaData";
-import { updateToppings , getProductDetails, clearErrors} from "../../action/toppings";
+import { updateToppings , getToppingsDetails, clearErrors} from "../../action/toppings";
 import { useNavigate, useParams } from "react-router-dom";
 import { UPDATE_PRODUCTS_RESET } from "../../constants/toppingsConstants";
 import Sidebar from "./Sidebar";
@@ -47,7 +47,7 @@ function UpdateToppings() {
     useEffect(() => {
 
         if (product && product._id !== productId) {
-            dispatch(getProductDetails(productId))
+            dispatch(getToppingsDetails(productId))
         } else {
             setName(product.name)
             setPrice(product.price)

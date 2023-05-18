@@ -64,7 +64,7 @@ export const getProductDetails = (id) => async (dispatch) => {
         //then get the success and pass the data
         dispatch({
             type: PRODUCTS_DETAILS_SUCCESS,
-            payload: data.drinks
+            payload: data
         })
 
     } catch (error) {

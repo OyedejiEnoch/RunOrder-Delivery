@@ -87,10 +87,7 @@ exports.getSingleProduct = catchAsyncErrors(async (req, res, next) => {
         return next(new ErrorHandler("Product not found", 404));
     }
 
-    res.status(200).json({
-        success: true,
-        toppings
-    })
+    res.status(200).json(toppings)
 });
 
 

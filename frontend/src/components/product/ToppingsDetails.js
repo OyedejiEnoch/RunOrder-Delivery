@@ -1,5 +1,5 @@
 import React, { Fragment, useEffect, useState } from "react";
-import { getProductDetails, clearErrors } from "../../action/toppings";
+import { getToppingsDetails, clearErrors } from "../../action/toppings";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import Loader from "../layout/Loader";
@@ -20,7 +20,7 @@ function ToppingsDetails() {
     const { loading, error, product } = useSelector(state => state.toppingsProductDetails)
 
     useEffect(() => {
-        dispatch(getProductDetails(params.id))
+        dispatch(getToppingsDetails(params.id))
 
 
 
@@ -33,8 +33,8 @@ function ToppingsDetails() {
 
 
     function addToCart() {
-        dispatch(addItemToCart(params.id, quantity))
-        toast.success("Item Added to Cart")
+        dispatch(addItemToCart(params.id, quantity, 'toppings'));
+        toast.success("Item Added to Cart");
     }
 
     function increaseQty() {

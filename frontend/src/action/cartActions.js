@@ -6,22 +6,38 @@ import { ADD_TO_CART, REMOVE_ITEM_CART, SAVE_SHIPPING_INFO } from "../constants/
 
 
 
-export const addItemToCart = (id, quantity) => async (dispatch, getState) => {
-    const { data } = await newRequest.get(`/api/v1/products/${id}`)
-
-    dispatch({
-        type: ADD_TO_CART,
-        payload: {
-            product: data.product._id,
-            name: data.product.name,
-            price: data.product.price,
-            image: data.product.images[0].url,
-            stock: data.product.stock,
-            quantity
+export const addItemToCart = (id, quantity, type) => async (dispatch, getState) => {
+    try {
+        let endpoint;
+        if (type === 'products') {
+            endpoint = '/api/v1/products/';
+        } else if (type === 'drinks') {
+            endpoint = '/api/v1/drinks/';
+        }else if (type ==="toppings"){
+            endpoint = '/api/v1/toppings/';
         }
-    })
+        else {
+            throw new Error('Invalid item type');
+        }
+        
+        const { data } = await newRequest.get(`${endpoint}${id}`);
 
-    localStorage.setItem('cartItems', JSON.stringify(getState().cart.cartItems))
+        dispatch({
+            type: ADD_TO_CART,
+            payload: {
+                product: data._id,
+                name: data.name,
+                price: data.price,
+                image: data.images[0].url,
+                stock: data.stock,
+                quantity
+            }
+        });
+
+        localStorage.setItem('cartItems', JSON.stringify(getState().cart.cartItems));
+    } catch (error) {
+        console.log(error);
+    }
 }
 
 

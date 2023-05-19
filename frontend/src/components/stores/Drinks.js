@@ -8,7 +8,6 @@ import { toast, } from "react-toastify"
 import 'react-toastify/dist/ReactToastify.css';
 import Pagination from "react-js-pagination"
 import { useParams } from "react-router-dom";
-import Search from "../layout/Search";
 import "./Drinks.css"
 
 // import Slider from "rc-slider"
@@ -29,7 +28,7 @@ function DrinksHome() {
     const { loading, products, error, productsCount, resPerPage } = useSelector(state => state.drinksProducts)
 
     const keyword = params.keyword
-const name ="enoch"
+
     useEffect(() => {
         if (error) {
             toast.error('Error Notification !', {
@@ -37,10 +36,14 @@ const name ="enoch"
             });
 
         }
+
+        window.onload = function() {
+            window.scrollTo(0, 0);
+          };
         // price
         dispatch(getDrinksProducts(keyword, currentPage));
         
-        console.log(name)
+
 
         // price
     }, [dispatch, error, keyword, currentPage])
@@ -54,11 +57,10 @@ const name ="enoch"
         <Fragment>
             
 
-            <div className="headerHome">
+            <div className="headerHomeDrinks">
 
                 <div className="headerCovHome">
                     <h1>Welcome to <span> Run Order </span> Products</h1>
-                    <Search />
                 </div>
             </div>
 
@@ -70,7 +72,7 @@ const name ="enoch"
 
                     <MetaData title={"Order to enjoy the experience"} />
                     <h1 id="products_heading">All Products</h1>
-                    {console.log(products)}
+
                     <section id="products" className="container mt-5">
                         <div className="row">
                             {products && products.map(product => (

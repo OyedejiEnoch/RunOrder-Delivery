@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React, { useEffect,Fragment } from "react";
 import 'animate.css';
 import { Link } from "react-router-dom";
 import "./LandingPage.css"
@@ -7,6 +7,14 @@ import 'animate.css';
 
 
 function LandingPage() {
+
+    useEffect(()=>{
+        window.onload = function() {
+            window.scrollTo(0, 0);
+          };
+    }, [])
+
+
     return (
         <Fragment>
         {/* <div>

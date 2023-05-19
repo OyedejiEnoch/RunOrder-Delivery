@@ -23,6 +23,10 @@ function ProductDetails() {
         dispatch(getProductDetails(params.id))
 
 
+        window.onload = function() {
+            window.scrollTo(0, 0);
+          };
+
 
         if (error) {
             toast.error(error);

@@ -31,6 +31,9 @@ const AgentsForm = () => {
             });
 
         }
+        window.onload = function() {
+            window.scrollTo(0, 0);
+          };
         // price
         dispatch(getCafeteriaForm( currentPage));
 

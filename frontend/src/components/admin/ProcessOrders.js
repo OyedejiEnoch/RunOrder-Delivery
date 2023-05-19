@@ -20,6 +20,8 @@ function ProcessOrder() {
     let params = useParams()
     const [status, setStatus] = useState("");
 
+    const { user:users } = useSelector(state => state.auth)
+
     const dispatch = useDispatch()
     let navigate = useNavigate()
     const { loading, order = {} } = useSelector(state => state.orderDetails)
@@ -32,6 +34,10 @@ function ProcessOrder() {
     useEffect(() => {
 
         dispatch(getOrderDetails(orderId))
+
+        window.onload = function() {
+            window.scrollTo(0, 0);
+          };
 
         if (error) {
             toast.error(error)
@@ -73,7 +79,7 @@ function ProcessOrder() {
 
                  <div className="offcanvas offcanvas-start" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
                     <div className="offcanvas-header">
-                     <h5 className="offcanvas-title" id="offcanvasScrollingLabel">Offcanvas with body scrolling</h5>
+                     <h5 className="offcanvas-title" id="offcanvasScrollingLabel">{users && users.name}</h5>
                     <button type="button" className="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                 
                     </div>

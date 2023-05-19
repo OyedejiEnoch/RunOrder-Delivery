@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React, {useEffect, Fragment } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
@@ -6,7 +6,7 @@ import MetaData from "../layout/MetaData";
 import { addItemToCart, removeItemFromCart } from "../../action/cartActions";
 import "./Cart.css"
 
-function Cart() {
+function Cart() {                
 
     const dispatch = useDispatch();
     let navigate = useNavigate()
@@ -17,9 +17,16 @@ function Cart() {
         dispatch(removeItemFromCart(id))
     }
 
+
+    useEffect(()=>{
+        window.onload = function() {
+            window.scrollTo(0, 0);
+          };
+    }, [])
+
     function increaseQty(id, quantity, stock) {
         const newQty = quantity + 1
-
+        {console.log(quantity)}
         if (newQty > stock) return;
 
         dispatch(addItemToCart(id, newQty))
@@ -45,7 +52,7 @@ function Cart() {
                 <Fragment>
 
                     <h2 className="mt-5">Your Cart: <b>{cartItems.length} items</b></h2>
-
+                   
                     <div className="row d-flex justify-content-between">
                         <div className="col-12 col-lg-8">
                             {cartItems.map(item => (

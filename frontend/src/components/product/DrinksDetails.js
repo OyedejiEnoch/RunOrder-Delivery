@@ -23,6 +23,9 @@ function DrinkDetails() {
         dispatch(getProductDetails(params.id))
 
 
+        window.onload = function() {
+            window.scrollTo(0, 0);
+          };
 
         if (error) {
             toast.error(error);
@@ -33,7 +36,7 @@ function DrinkDetails() {
 
 
     function addToCart() {
-        dispatch(addItemToCart(params.id, quantity))
+        dispatch(addItemToCart(params.id, quantity, "drinks"))
         toast.success("Item Added to Cart")
     }
 

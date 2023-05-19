@@ -40,6 +40,10 @@ function Dashboard() {
         dispatch(allOrders())
         dispatch(allUsers())
 
+        window.onload = function() {
+            window.scrollTo(0, 0);
+          };
+
     }, [dispatch])
 
     const value=(users.length / 10000) *100 

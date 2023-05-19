@@ -30,6 +30,9 @@ exports.registerUser = catchAsyncErrors(async (req, res, next) => {
        
         
     })
+     // Set session variables
+    req.session.authenticated = true;
+    req.session.lastActivity = Date.now();
 
     sendToken(user, 200, res)
 
@@ -66,6 +69,9 @@ exports.loginUser = catchAsyncErrors(async (req, res, next) => {
     if (!isPasswordMatched) {
         return next(new ErrorHandler("Invalid email or password", 401))
     }
+
+    req.session.authenticated = true;
+    req.session.lastActivity = Date.now();
     //else
     // const token = user.getJwtToken();
 
@@ -234,6 +240,13 @@ exports.logout = catchAsyncErrors(async (req, res, next) => {
         expires: new Date(Date.now()),
         httpOnly: true
     })
+
+    req.session.destroy((err) => {
+        if (err) {
+          console.log(err);
+        }
+        res.redirect('/login');
+      });
 
     res.status(200).json({
         success: true,

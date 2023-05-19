@@ -1,5 +1,7 @@
 const express = require("express");
 const app = express();
+const session = require('express-session');
+
 const cookieParser = require("cookie-parser")
 const bodyParser = require("body-parser")
 const cloudinary = require("cloudinary")
@@ -16,6 +18,19 @@ const corsOptions = {
 };
 
 app.use(cors(corsOptions)); // this line enables CORS with options for all routes
+
+app.use(
+  session({
+    secret: 'oyedejienoch',
+    resave: false,
+    saveUninitialized: true,
+    cookie: { 
+      secure: true,
+      httpOnly: true,
+      maxAge: 86400000, // Session expiration time (in milliseconds)
+    }, // Set secure: true if using HTTPS
+  })
+);
 app.use(express.json({ limit: "50mb" }));
 app.use(cookieParser());
 app.use(bodyParser.urlencoded({ limit: "50mb", extended: true, parameterLimit: 5000 }));

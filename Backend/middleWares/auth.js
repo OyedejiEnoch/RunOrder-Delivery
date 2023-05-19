@@ -8,6 +8,13 @@ exports.isAunthenticatedUser = catchAsyncErrors(async (req, res, next) => {
     // to get the token i.e cookie token 
     const { token } = req.cookies
     // if token doesnt exist
+
+    if (req.session.authenticated === true) {
+        // Renew session on each page load
+        req.session.lastActivity = Date.now();
+        return next();
+    }
+
     if (!token) {
         return next(new ErrorHandler("Login /Register to access this resource", 401))
 

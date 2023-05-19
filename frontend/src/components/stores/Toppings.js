@@ -8,7 +8,7 @@ import { toast, } from "react-toastify"
 import 'react-toastify/dist/ReactToastify.css';
 import Pagination from "react-js-pagination"
 import { useParams } from "react-router-dom";
-import Search from "../layout/Search";
+
 import "./Toppings.css"
 
 // import Slider from "rc-slider"
@@ -37,6 +37,10 @@ function ToppingsHome() {
             });
 
         }
+
+        window.onload = function() {
+            window.scrollTo(0, 0);
+          };
         // price
         dispatch(getProducts(keyword, currentPage));
 
@@ -52,11 +56,10 @@ function ToppingsHome() {
         <Fragment>
 
 
-            <div className="headerHome">
+            <div className="headerHomeToppings">
 
                 <div className="headerCovHome">
                     <h1>Welcome to <span> Run Order </span> Products</h1>
-                    <Search />
                 </div>
             </div>
 

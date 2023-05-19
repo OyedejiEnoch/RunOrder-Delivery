@@ -25,6 +25,10 @@ function OrderList() {
     useEffect(() => {
         dispatch(allOrders());
 
+        window.onload = function() {
+            window.scrollTo(0, 0);
+          };
+
         if (error) {
             toast.error(error);
             dispatch(clearErrors())

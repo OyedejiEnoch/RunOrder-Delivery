@@ -85,7 +85,7 @@ function ConfirmOrder() {
             name: user.name,
             phone: shippingInfo.phoneNo,
         },
-        publicKey: "pk_test_cd89b0baeaa20167f5429baff62f935bb851e25e",
+        publicKey: "pk_live_fadff22176bbf1d769dd6d31b4073faa0893a02a",
         text: "Pay Now",
         onSuccess: () => (
             alert("Thanks for ordering with us! Come back soon!!"), proceedToPayment(), orderPay()),

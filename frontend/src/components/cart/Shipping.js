@@ -8,6 +8,7 @@ import { saveShippingInfo } from "../../action/cartActions";
 import { useNavigate } from "react-router-dom";
 
 import CheckoutSteps from "./CheckoutSteps";
+import { useEffect } from "react";
 
 function Shipping() {
     let navigate = useNavigate()
@@ -23,6 +24,12 @@ function Shipping() {
     const [cafeteria, setCafeteria] = useState(shippingInfo.cafeteria)
 
     const dispatch = useDispatch()
+
+    useEffect(()=>{
+        window.onload = function() {
+            window.scrollTo(0, 0);
+          };
+    },[])
 
     function handleSubmit(e) {
         e.preventDefault()

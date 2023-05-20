@@ -17,7 +17,9 @@ const sendToken = (user, statusCode, res) => {
         sameSite: 'None'
     }
 
-    
+    res.setHeader('Access-Control-Allow-Origin', "https://runorder.store");
+    res.setHeader('Access-Control-Allow-Credentials', 'true');
+
 
     res.status(statusCode).cookie("token", token, options).json({
         success: true,

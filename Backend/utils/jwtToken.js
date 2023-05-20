@@ -12,6 +12,7 @@ const sendToken = (user, statusCode, res) => {
             Date.now() + process.env.COOKIE_EXPIRES_TIME * 24 * 60 * 60 * 1000
         ),
         httpOnly: true,
+        domain: 'www.runorder.store', // Replace with your actual domain
         secure: true, // Set to true for HTTPS
         sameSite: 'None'
     }
@@ -28,4 +29,3 @@ const sendToken = (user, statusCode, res) => {
 module.exports = sendToken
 
 
-// domain: 'www.runorder.store', // Replace with your actual domain

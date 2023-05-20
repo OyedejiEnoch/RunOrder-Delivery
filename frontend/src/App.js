@@ -166,3 +166,9 @@ function App() {
 
 export default App;
 // 
+
+
+// Options -MultiViews
+//     RewriteEngine On
+//     RewriteCond %{REQUEST_FILENAME} !-f
+//     RewriteRule ^ index.html [QSA,L]

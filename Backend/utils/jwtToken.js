@@ -13,6 +13,7 @@ const sendToken = (user, statusCode, res) => {
         ),
         httpOnly: true,
         secure: true, // Set to true for HTTPS
+        domain: 'https://runorder.store', // Replace with your actual domain
         sameSite: 'None'
     }
 

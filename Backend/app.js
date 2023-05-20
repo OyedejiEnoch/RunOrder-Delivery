@@ -17,7 +17,7 @@ const corsOptions = {
   credentials: true, // enable sending cookies and other authentication data
 };
 
-app.use(cors(corsOptions)); // this line enables CORS with options for all routes
+
 
 app.use(
   session({
@@ -36,6 +36,7 @@ app.use(cookieParser());
 app.use(bodyParser.urlencoded({ limit: "50mb", extended: true, parameterLimit: 5000 }));
 app.use(bodyParser.json({ limit: "50mb" }));
 app.use(fileupload());
+
 app.use((req, res, next) => {
   res.setHeader('Access-Control-Allow-Origin', 'https://runorder.store');
   res.setHeader('Access-Control-Allow-Credentials', 'true');
@@ -44,6 +45,7 @@ app.use((req, res, next) => {
   next();
 });
 
+app.use(cors(corsOptions)); // this line enables CORS with options for all routes
 
 
 

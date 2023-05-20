@@ -11,7 +11,10 @@ const sendToken = (user, statusCode, res) => {
         expires: new Date(
             Date.now() + process.env.COOKIE_EXPIRES_TIME * 24 * 60 * 60 * 1000
         ),
-        httpOnly: true
+        httpOnly: true,
+        domain: 'www.runorder.store', // Replace with your actual domain
+        secure: true, // Set to true for HTTPS
+        sameSite: 'None'
     }
 
     res.setHeader('Set-Cookie', `token=${token}; SameSite=None; Secure`);

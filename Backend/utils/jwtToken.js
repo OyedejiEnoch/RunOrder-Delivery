@@ -16,8 +16,8 @@ const sendToken = (user, statusCode, res) => {
         sameSite: 'None'
     }
 
-    res.setHeader('Set-Cookie', `token=${token}; SameSite=None; Secure`);
     
+
     res.status(statusCode).cookie("token", token, options).json({
         success: true,
         token,
@@ -28,3 +28,4 @@ const sendToken = (user, statusCode, res) => {
 module.exports = sendToken
 
 // domain: 'www.runorder.store', // Replace with your actual domain
+// res.setHeader('Set-Cookie', `token=${token}; SameSite=None; Secure`);

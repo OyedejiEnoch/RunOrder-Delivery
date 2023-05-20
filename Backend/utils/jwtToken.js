@@ -16,11 +16,6 @@ const sendToken = (user, statusCode, res) => {
         sameSite: 'None'
     }
 
-    res.setHeader('Set-Cookie', `token=${token}; SameSite=None; Secure`)
-    res.setHeader('Access-Control-Allow-Origin', 'https://runorder.store')
-    res.setHeader('Access-Control-Allow-Methods', 'POST')
-    res.setHeader('Access-Control-Allow-Headers', 'Content-Type')
-
     res.status(statusCode).cookie("token", token, options).json({
         success: true,
         token,

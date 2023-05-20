@@ -7,8 +7,6 @@ const bodyParser = require("body-parser")
 const cloudinary = require("cloudinary")
 const fileupload = require("express-fileupload");
 const cors = require('cors')
-
-
 const errorMiddleWares = require("./middleWares/errors")
 
 // set up the CORS policy
@@ -17,7 +15,7 @@ const corsOptions = {
   credentials: true,
 };
 
-app.use(cors(corsOptions)); // this line enables CORS with options for all routes
+
 
 app.use(
   session({
@@ -36,6 +34,8 @@ app.use(cookieParser());
 app.use(bodyParser.urlencoded({ limit: "50mb", extended: true, parameterLimit: 5000 }));
 app.use(bodyParser.json({ limit: "50mb" }));
 app.use(fileupload());
+
+app.use(cors(corsOptions)); // this line enables CORS with options for all routes
 
 
 

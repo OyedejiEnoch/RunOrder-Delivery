@@ -245,7 +245,6 @@ exports.logout = catchAsyncErrors(async (req, res, next) => {
         if (err) {
           console.log(err);
         }
-        res.redirect('/login');
       });
 
     res.status(200).json({

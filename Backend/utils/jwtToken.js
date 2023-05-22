@@ -13,13 +13,10 @@ const sendToken = (user, statusCode, res) => {
         ),
         httpOnly: true,
         secure: true, // Set to true for HTTPS
-        // domain: '.runorder.store', // Replace with your actual domain
-        sameSite: 'None'
-    }
+        sameSite: 'None',
+    };
 
-    res.setHeader('Access-Control-Allow-Origin', "https://runorder.store");
-    res.setHeader('Access-Control-Allow-Credentials', 'true');
-
+    res.setHeader("Set-Cookie", `token=${token}; SameSite=None; Secure`);
 
     res.status(statusCode).cookie("token", token, options).json({
         success: true,
@@ -32,3 +29,5 @@ module.exports = sendToken
 
 // domain: 'www.runorder.store', // Replace with your actual domain
 // res.setHeader('Set-Cookie', `token=${token}; SameSite=None; Secure`);
+// res.setHeader('Access-Control-Allow-Origin', "https://runorder.store");
+// res.setHeader('Access-Control-Allow-Credentials', 'true');

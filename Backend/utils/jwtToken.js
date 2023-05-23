@@ -18,11 +18,11 @@ const sendToken = (user, statusCode, res) => {
 
     res.setHeader("Set-Cookie", `token=${token}; SameSite=None; Secure`);
 
-    res.status(statusCode).cookie("token", token, options).json({
+    res.status(statusCode).json({
         success: true,
         token,
         user
-    })
+       })
 };
 
 module.exports = sendToken

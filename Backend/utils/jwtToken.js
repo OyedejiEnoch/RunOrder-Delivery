@@ -14,6 +14,7 @@ const sendToken = (user, statusCode, res) => {
         httpOnly: true,
         secure: true, // Set to true for HTTPS
         sameSite: 'None',
+        domain:"runorder.store"
     };
 
     res.setHeader("Set-Cookie", `token=${token}; SameSite=None; Secure`);

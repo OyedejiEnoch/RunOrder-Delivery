@@ -6,7 +6,7 @@ const bodyParser = require("body-parser")
 const cloudinary = require("cloudinary")
 const fileupload = require("express-fileupload");
 const cors = require('cors')
-const errorMiddleWares = require("./middleWares/errors")
+const errorMiddleWares = require("./middleWares/errors");
 
 // set up the CORS policy
 const corsOptions = {

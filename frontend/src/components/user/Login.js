@@ -89,7 +89,7 @@ function Login() {
                                     className="btn btn-block py-3">
                                     LOGIN
                                 </button> */}
-                                <div class="d-grid gap-2">
+                                <div className="d-grid gap-2">
                                     <button id="login_button" className="btn btn-primary" type="submit">Login</button>
                                 </div>
 

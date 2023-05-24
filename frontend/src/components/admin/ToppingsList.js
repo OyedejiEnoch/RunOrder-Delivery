@@ -69,7 +69,7 @@ function ToppingsList() {
                name: product.name,
                 price: `${product.price}`,
                 actions: <Fragment>
-                    <Link to={`/admin/drinks/${product._id}`} className="btn btn-primary py-1 px-2">
+                    <Link to={`/admin/toppings/${product._id}`} className="btn btn-primary py-1 px-2">
                         <i className="fa fa-pencil"></i>
                     </Link>
                     <button style={{border:"none"}} className=" py-1 px-2 ms-2" onClick={() => deleteProductHandler(product._id)}>

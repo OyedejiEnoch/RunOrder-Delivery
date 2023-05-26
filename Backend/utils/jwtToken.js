@@ -13,10 +13,10 @@ const sendToken = (user, statusCode, res) => {
         ),
         httpOnly: true,
         secure: true, // Set to true for HTTPS
-        // domain: '.runorder.store', // Replace with your actual domain
         sameSite: 'None'
     }
-    res.setHeader('Set-Cookie', `token=${token}; SameSite=None; Secure`);
+    res.setHeader('Set-Cookie', `token=${token}; SameSite=None; Secure; Domain=.runorder.store`);
+    // res.setHeader('Set-Cookie', `token=${token}; SameSite=None; Secure`);
 
     res.status(statusCode).cookie("token", token, options).json({
         success: true,

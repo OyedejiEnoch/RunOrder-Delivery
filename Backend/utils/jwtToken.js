@@ -20,6 +20,7 @@ const sendToken = (user, statusCode, res, req) => {
         httpOnly: true,
         secure: req.protocol === 'https', // Set to true for HTTPS
         sameSite: 'None',
+        secure:true
 
     }
 

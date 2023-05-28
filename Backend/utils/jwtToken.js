@@ -20,7 +20,6 @@ const sendToken = (user, statusCode, res, req) => {
         httpOnly: true,
         secure: req.protocol === 'https', // Set to true for HTTPS
         sameSite: 'None',
-        secure:true
 
     }
 
@@ -28,7 +27,7 @@ const sendToken = (user, statusCode, res, req) => {
     // res.setHeader('Set-Cookie', `token=${token}; SameSite=None; Secure; Domain=runorder.store`);
     // res.setHeader('Set-Cookie', `token=${token}; SameSite=None; Secure`);
 
-    res.status(statusCode).json({
+    res.status(statusCode).cookie('token', token, options).json({
         success: true,
         token,
         user

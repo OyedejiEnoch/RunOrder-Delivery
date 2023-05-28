@@ -33,7 +33,7 @@ exports.registerUser = catchAsyncErrors(async (req, res, next) => {
      // Set session variables
 
 
-    sendToken(user, 200, res, req)
+    sendToken(user, 200, res,)
 
     // avatar: {
     //     public_id: result.public_id,
@@ -75,7 +75,7 @@ exports.loginUser = catchAsyncErrors(async (req, res, next) => {
     //     success: true,   
     //     token
     // })
-    sendToken(user, 200, res, req)
+    sendToken(user, 200, res, )
 })
 
 

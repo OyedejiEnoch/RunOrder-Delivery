@@ -17,6 +17,7 @@ function ConfirmOrder() {
     let navigate = useNavigate()
     const { cartItems, shippingInfo } = useSelector(state => state.cart)
     const { user } = useSelector(state => state.auth)
+    const { orders } = useSelector(state => state.myOrders)
 
     //Calculate order prices without tax & shippping
     const itemsPrice = cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0)
@@ -85,7 +86,7 @@ function ConfirmOrder() {
             name: user.name,
             phone: shippingInfo.phoneNo,
         },
-        publicKey: "pk_live_fadff22176bbf1d769dd6d31b4073faa0893a02a",
+        publicKey: "pk_live_5c16033baf7aa0cd03bd01b1dce8fd67bc8adf46",
         text: "Pay Now",
         onSuccess: () => (
             alert("Thanks for ordering with us! Come back soon!!"), proceedToPayment(), orderPay()),
@@ -106,12 +107,12 @@ function ConfirmOrder() {
 
             <div className="row d-flex justify-content-between">
                 <div className="col-12 col-lg-8 mt-5 order-confirm">
-
                     <h4 className="mb-3">Delivery Info</h4>
                     <p><b>Name:</b>{user && user.name}</p>
                     <p><b>Phone:</b> {shippingInfo.phoneNo}</p>
                     <p className="mb-4"><b>Address:</b> {`${shippingInfo.address},`}</p>
                     <p className="mb-4"><b>Cafeteria:</b> {` ${shippingInfo.cafeteria}`}</p>
+                    <p>Previous Orders: {orders.length}</p>
                     {/* visit to change details */}
 
                     <hr />
@@ -127,7 +128,7 @@ function ConfirmOrder() {
                                         <Link className="link" to={`/product/${item.product}`}>{item.name}</Link>
                                     </div>                               
                                     <div className="cartAdjustPrice">
-                                        <p>{item.quantity} x <i class="fa-solid fa-naira-sign"></i> {item.price} = <b> <i class="fa-solid fa-naira-sign"></i>  {item.quantity * item.price}</b></p>
+                                        <p>{item.quantity} x <i className="fa-solid fa-naira-sign"></i> {item.price} = <b> <i className="fa-solid fa-naira-sign"></i>  {item.quantity * item.price}</b></p>
                                     </div>
 
                                 </div>
@@ -143,13 +144,13 @@ function ConfirmOrder() {
                     <div id="order_summary">
                         <h4>Order Summary</h4>
                         <hr />
-                        <p>Subtotal:  <span className="order-summary-values"><i class="fa-solid fa-naira-sign"></i>{itemsPrice}</span></p>
-                        <p>Dilivery Fee: <span className="order-summary-values"><i class="fa-solid fa-naira-sign"></i>{shippingPrice}</span></p>
-                        <p>Pack Price:  <span className="order-summary-values"><i class="fa-solid fa-naira-sign"></i>{taxPrice}</span></p>
+                        <p>Subtotal:  <span className="order-summary-values"><i className="fa-solid fa-naira-sign"></i>{itemsPrice}</span></p>
+                        <p>Dilivery Fee: <span className="order-summary-values"><i className="fa-solid fa-naira-sign"></i>{shippingPrice}</span></p>
+                        <p>Pack Price:  <span className="order-summary-values"><i className="fa-solid fa-naira-sign"></i>{taxPrice}</span></p>
 
                         <hr />
 
-                        <p>Total: <span className="order-summary-values"><i class="fa-solid fa-naira-sign"></i>{totalPrice}</span></p>
+                        <p>Total: <span className="order-summary-values"><i className="fa-solid fa-naira-sign"></i>{totalPrice}</span></p>
 
                         <hr />
 

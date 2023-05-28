@@ -75,10 +75,10 @@ function Cart() {
 
 
                                             <div className="stockCounter cartAdjustQuantity">
-                                                <button style={{width:"fit-content", height:" fit-content", borderRadius:"10px"}} className="cartAdjustQuantityBtn" onClick={() => decreaseQty(item.product, item.quantity)}>-</button>
+                                                {/* <button style={{width:"fit-content", height:" fit-content", borderRadius:"10px"}} className="cartAdjustQuantityBtn" onClick={() => decreaseQty(item.product, item.quantity)}>-</button> */}
                                                 <input type="number" className="form-control count d-inline" value={item.quantity} readOnly />
 
-                                                <button style={{width:"fit-content", height:" fit-content", borderRadius:"10px"}} className="cartAdjustQuantityBtn" onClick={() => increaseQty(item.product, item.quantity, item.stock)}>+</button>
+                                                {/* <button style={{width:"fit-content", height:" fit-content", borderRadius:"10px"}} className="cartAdjustQuantityBtn" onClick={() => increaseQty(item.product, item.quantity, item.stock)}>+</button> */}
                                             </div>
 
 

@@ -106,12 +106,12 @@ function Shipping() {
 
 
                                 <option >Select.. </option>
-                                <option >Manner Palace </option>
+                                {/* <option >Manner Palace </option> */}
                                 <option >Double Portion </option>
                                 <option >National Kitchen</option>
-                                <option >Mimies</option>
+                                <option >Mimi's</option>
                                 <option >Divine Hands</option>
-                                <option >Numbers</option>
+                                {/* <option >Numbers</option> */}
 
 
                             </select>

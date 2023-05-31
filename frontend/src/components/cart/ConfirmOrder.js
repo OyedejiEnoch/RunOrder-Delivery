@@ -11,13 +11,14 @@ import { PaystackButton } from 'react-paystack'
 
 import { createOrder, clearErrors } from "../../action/orderActions"
 import { toast } from "react-toastify";
+import { allUsers } from "../../action/userActions";
 import "./ConfirmOrder.css"
 
 function ConfirmOrder() {
     let navigate = useNavigate()
     const { cartItems, shippingInfo } = useSelector(state => state.cart)
     const { user } = useSelector(state => state.auth)
-    const { orders } = useSelector(state => state.myOrders)
+    const { users } = useSelector(state => state.allUsers)
 
     //Calculate order prices without tax & shippping
     const itemsPrice = cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0)
@@ -42,7 +43,7 @@ function ConfirmOrder() {
     const { error } = useSelector(state => state.newOrder)
     const dispatch = useDispatch()
     useEffect(() => {
-
+        dispatch(allUsers())
         if (error) {
             toast.error(error)
             dispatch(clearErrors())
@@ -100,11 +101,13 @@ function ConfirmOrder() {
 
 
     return (
+        
         <Fragment>
             <MetaData title={"Confirm Order"} />
+           
             <CheckoutSteps shipping confirmOrder />
 
-
+            {users && 
             <div className="row d-flex justify-content-between">
                 <div className="col-12 col-lg-8 mt-5 order-confirm">
                     <h4 className="mb-3">Delivery Info</h4>
@@ -112,7 +115,7 @@ function ConfirmOrder() {
                     <p><b>Phone:</b> {shippingInfo.phoneNo}</p>
                     <p className="mb-4"><b>Address:</b> {`${shippingInfo.address},`}</p>
                     <p className="mb-4"><b>Cafeteria:</b> {` ${shippingInfo.cafeteria}`}</p>
-                    <p>Previous Orders: {orders.length}</p>
+                    
                     {/* visit to change details */}
 
                     <hr />
@@ -158,8 +161,9 @@ function ConfirmOrder() {
                     </div>
                 </div>
 
-
-            </div>
+            
+            </div> }
+            
 
         </Fragment>
     )

@@ -239,7 +239,7 @@ function Dashboard() {
                         (<div className="col-xl-3 col-sm-6 mb-3 dashbordBox">
                                     <div className="card o-hidden h-100 dashbordBg">
                                         <div className="card-body">
-                                            <div className="text-center ">Mimies<br /> <i className="fa-solid fa-naira-sign"></i> <b>{mimiestotalAmount}</b></div>
+                                            <div className="text-center ">Mimi's<br /> <i className="fa-solid fa-naira-sign"></i> <b>{mimiestotalAmount}</b></div>
                                         </div>
                                         <Link className="card-footer clearfix small z-1" to="/admin/mimies">
                                             <span className="float-left">View Details</span>

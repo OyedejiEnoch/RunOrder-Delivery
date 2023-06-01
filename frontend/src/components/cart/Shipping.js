@@ -53,6 +53,7 @@ function Shipping() {
                                 id="address_field"
                                 className="form-control"
                                 value={address}
+                                placeholder="girls hostel blk29 rm32"
                                 onChange={(e) => setAddress(e.target.value)}
                                 required
                             />

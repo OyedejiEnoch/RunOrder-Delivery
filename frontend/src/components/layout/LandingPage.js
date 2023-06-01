@@ -66,6 +66,20 @@ function LandingPage() {
                             </Link>
                         </div> 
                     </div>
+
+                    <div className="landingPageCard animate__animated animate__fadeInUp">
+                    <div className="landingBackground4">
+                    </div>
+                    <span className="landingCardTitle" >RUNSA WEEK</span>
+                        <div className="landingPageButton">
+                        <Link to="" style={{textDecoration:"none"}} >
+                            <button disabled={true}>Coming Soon</button>
+                            </Link>
+                        </div> 
+                    </div>
+
+
+
                     </div>
                 </div>
 

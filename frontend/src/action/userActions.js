@@ -9,6 +9,7 @@ import {
     REGISTER_USER_FAIL,
     LOAD_USER_REQUEST,
     LOAD_USER_SUCCESS,
+    LOAD_USER,
     LOAD_USER_FAIL,
     LOGOUT_SUCCESS,
     LOGOUT_FAIL,
@@ -108,6 +109,27 @@ export const loadUser = (userData) => async (dispatch) => {
 
         dispatch({
             type: LOAD_USER_SUCCESS,
+            payload: data.user
+        })
+
+    } catch (error) {
+        dispatch({
+            type: LOAD_USER_FAIL,
+            payload: error.response.data.message
+        })
+    }
+}
+// this is where i adjusted
+export const loadUserAuth = (userData) => async (dispatch) => {
+    try {
+
+        // dispatch({ type: LOAD_USER_REQUEST })
+
+
+        const { data } = await newRequest.get("/api/v1/me")
+
+        dispatch({
+            type: LOAD_USER,
             payload: data.user
         })
 

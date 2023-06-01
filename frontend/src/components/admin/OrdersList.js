@@ -50,13 +50,18 @@ function OrderList() {
             columns: [
              
                 {
-                    label: 'No of Items',
-                    field: 'numOfItems',
+                    label: 'Location',
+                    field: 'location',
                     sort: 'asc'
                 },
                 {
                     label: 'Amount',
                     field: 'amount',
+                    sort: 'asc'
+                },
+                {
+                    label: 'Caf',
+                    field: 'Caf',
                     sort: 'asc'
                 },
                 {
@@ -76,7 +81,8 @@ function OrderList() {
         orders.forEach(order => {
             data.rows.push({
                
-                numOfItems: order.shippingInfo.address,
+                location: order.shippingInfo.address,
+                Caf:order.shippingInfo.cafeteria,
                 amount: `N ${order.totalPrice - 200}`,
                 Status: order.orderStatus && String(order.orderStatus).includes('Accepted')
                 ? <p style={{ color: 'green' }}>{order.orderStatus}</p>

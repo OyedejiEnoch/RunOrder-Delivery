@@ -76,7 +76,7 @@ const MimiesForm = () => {
 
         <div className="col-12 col-md-10">
             <div className="agentsCount">
-            <h2>Mimies</h2>
+            <h2>Mimi's</h2>
             <h1>Total Orders taken: <span>{formsCount} </span> </h1>
             <h1>Total Amount:<span><i className="fa-solid fa-naira-sign"></i>{mimiestotalAmount}</span> </h1>
 

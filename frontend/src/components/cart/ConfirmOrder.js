@@ -1,24 +1,21 @@
 import React, { Fragment, useEffect } from "react";
 import { Link } from "react-router-dom";
-
 import { useDispatch, useSelector } from "react-redux";
-
 import MetaData from "../layout/MetaData";
 import CheckoutSteps from "./CheckoutSteps";
 import { useNavigate } from "react-router-dom";
-
 import { PaystackButton } from 'react-paystack'
-
 import { createOrder, clearErrors } from "../../action/orderActions"
 import { toast } from "react-toastify";
-import { allUsers } from "../../action/userActions";
+import {loadUserAuth} from "../../action/userActions"
+
 import "./ConfirmOrder.css"
 
 function ConfirmOrder() {
     let navigate = useNavigate()
     const { cartItems, shippingInfo } = useSelector(state => state.cart)
     const { user } = useSelector(state => state.auth)
-    const { users } = useSelector(state => state.allUsers)
+    const { userAuth } = useSelector(state => state.auth)
 
     //Calculate order prices without tax & shippping
     const itemsPrice = cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0)
@@ -26,7 +23,7 @@ function ConfirmOrder() {
     const shippingPrice = itemsPrice > 200 ? 200 : 100
     const taxPrice = 150
     const totalPrice = (itemsPrice + shippingPrice + taxPrice).toFixed(2)
-
+    
 
     function proceedToPayment() {
         const data = {
@@ -43,7 +40,8 @@ function ConfirmOrder() {
     const { error } = useSelector(state => state.newOrder)
     const dispatch = useDispatch()
     useEffect(() => {
-        dispatch(allUsers())
+        dispatch(loadUserAuth());
+        
         if (error) {
             toast.error(error)
             dispatch(clearErrors())
@@ -79,7 +77,6 @@ function ConfirmOrder() {
 
 
 
-
     const componentProps = {
         email: user.email,
         amount: totalPrice * 100,
@@ -92,12 +89,7 @@ function ConfirmOrder() {
         onSuccess: () => (
             alert("Thanks for ordering with us! Come back soon!!"), proceedToPayment(), orderPay()),
         onClose: () => alert("Do bear with us, we are ready to please you better"),
-
-
-
     }
-
-
 
 
     return (
@@ -107,7 +99,6 @@ function ConfirmOrder() {
            
             <CheckoutSteps shipping confirmOrder />
 
-            {users && 
             <div className="row d-flex justify-content-between">
                 <div className="col-12 col-lg-8 mt-5 order-confirm">
                     <h4 className="mb-3">Delivery Info</h4>
@@ -115,8 +106,7 @@ function ConfirmOrder() {
                     <p><b>Phone:</b> {shippingInfo.phoneNo}</p>
                     <p className="mb-4"><b>Address:</b> {`${shippingInfo.address},`}</p>
                     <p className="mb-4"><b>Cafeteria:</b> {` ${shippingInfo.cafeteria}`}</p>
-                    
-                    {/* visit to change details */}
+
 
                     <hr />
                     <h4 className="mt-4">Your Cart Items:</h4>
@@ -157,12 +147,12 @@ function ConfirmOrder() {
 
                         <hr />
 
-                        <PaystackButton id="checkout_btn" className="btn btn-primary btn-block"{...componentProps} />
+                         <PaystackButton id="checkout_btn" className="btn btn-primary btn-block"{...componentProps} />
                     </div>
                 </div>
 
             
-            </div> }
+            </div> 
             
 
         </Fragment>

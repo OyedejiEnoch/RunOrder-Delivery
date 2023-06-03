@@ -30,6 +30,7 @@ app.use(fileupload());
 const products = require("./routes/product")
 const drinks = require("./routes/drinks")
 const toppings = require("./routes/toppings")
+const food = require("./routes/food")
 const authUsers = require("./routes/authUser")
 const order = require("./routes/order")
 const agentsForm = require("./routes/agentForm")
@@ -50,6 +51,7 @@ app.get('/', (req, res) => {
   })
 })
 
+app.use("/api/v1", food)
 app.use("/api/v1", products)
 app.use("/api/v1", drinks)
 app.use("/api/v1", toppings)

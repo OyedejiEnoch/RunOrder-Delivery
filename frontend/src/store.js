@@ -5,6 +5,7 @@ import { composeWithDevTools } from "redux-devtools-extension"
 import { productsReducer, productDetailsReducer, newProductReducer, productReducer } from "./reducers/productReducers"
 import { drinksReducer, drinkDetailsReducer, newDrinkReducer, drinkReducer } from "./reducers/drinksReducer";
 import { allToppingsReducer, toppingsDetailsReducer, newToppingsReducer, toppingsReducer } from "./reducers/toppingsReducers";
+import { allFoodReducer, foodDetailsReducer, newFoodReducer, foodReducer } from "./reducers/foodReducers";
 
 import { authReducer, userReducer, forgotPasswordReducer, allUsersReducer, userDetailsReducer } from "./reducers/userReducers";
 import { cartReducer } from "./reducers/cartReducers";
@@ -28,6 +29,11 @@ const rootReducer = combineReducers({
     drinksProductDetails: drinkDetailsReducer,
     newDrinksProduct: newDrinkReducer,
     drinksProduct: drinkReducer,
+
+    foodProducts: allFoodReducer,
+    foodProductDetails: foodDetailsReducer,
+    newFoodProduct: newFoodReducer,
+    foodProduct: foodReducer,
 
     toppingsProducts: allToppingsReducer,
     toppingsProductDetails: toppingsDetailsReducer,

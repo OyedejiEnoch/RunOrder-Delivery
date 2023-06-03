@@ -38,11 +38,12 @@ function LandingPage() {
                     </div>
                     <span className="landingCardTitle" >Food</span>
                         <div className="landingPageButton">
-                        <Link to="/home" style={{textDecoration:"none"}} >
+                        <Link to="/foods" style={{textDecoration:"none"}} >
                             <button>Go to store</button>
                             </Link>
                         </div> 
                     </div>
+                    {/* link to =/home */}
 
                     <div className="landingPageCard animate__animated animate__fadeInUp">
                     <div className="landingBackground2">

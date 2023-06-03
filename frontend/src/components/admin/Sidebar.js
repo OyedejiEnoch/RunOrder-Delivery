@@ -43,6 +43,7 @@ function Sidebar() {
                             </li>
                         </ul>
                     </li>)}
+                    {/* toppings */}
                     { user && user.role !== "admin" && user.role !== "team" ? null :
                     (<li>
                         <a class="btn btn-primary " data-bs-toggle="collapse" href="#collapseExample4" role="button" aria-expanded="false" aria-controls="collapseExample" className="dropdown-toggle" ><i
@@ -54,6 +55,22 @@ function Sidebar() {
 
                             <li>
                                 <Link to="/admin/topping"><i className="fa fa-plus"></i> Create</Link>
+                            </li>
+                        </ul>
+                    </li>)}
+
+                    {/* food */}
+                    { user && user.role !== "admin" && user.role !== "team" ? null :
+                    (<li>
+                        <a class="btn btn-primary " data-bs-toggle="collapse" href="#collapseExample5" role="button" aria-expanded="false" aria-controls="collapseExample" className="dropdown-toggle" ><i
+                            className="fa fa-product-hunt"></i> Foods</a>
+                        <ul className="collapse list-unstyled collapse.show " id="collapseExample5">
+                            <li>
+                                <Link to="/admin/foods"><i className="fa fa-clipboard-list"></i> All</Link>
+                            </li>
+
+                            <li>
+                                <Link to="/admin/food"><i className="fa fa-plus"></i> Create</Link>
                             </li>
                         </ul>
                     </li>)}

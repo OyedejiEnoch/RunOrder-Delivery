@@ -1,4 +1,4 @@
-const Toppings = require("../models/toppings");
+const Food = require("../models/food");
 const ErrorHandler = require("../utils/errorHandler")
 const catchAsyncErrors = require("../middleWares/catchAsyncErrors");
 const APIFeatures = require("../utils/apiFeatures");
@@ -28,11 +28,11 @@ exports.newProduct = catchAsyncErrors(async (req, res, next) => {
     //if it is a single image then it is a string else it is an array with multiple images 
     req.body.images = imagesLinks
     req.body.user = req.user.id
-    const toppings = await Toppings.create(req.body)
+    const food = await Food.create(req.body)
 
     res.status(201).json({
         success: true,
-        toppings
+        food
     })
 });
 
@@ -41,22 +41,22 @@ exports.newProduct = catchAsyncErrors(async (req, res, next) => {
 exports.getProducts = catchAsyncErrors(async (req, res, next) => {
 
     const resPerPage = 8;
-    const toppingsCount = await Toppings.countDocuments();
+    const foodCount = await Food.countDocuments();
 
-    const apiFeatures = new APIFeatures(Toppings.find(), req.query)
+    const apiFeatures = new APIFeatures(Food.find(), req.query)
         .search()
         .filter()
         .pagination(resPerPage)
 
-    const toppings = await apiFeatures.query;
+    const food = await apiFeatures.query;
     
 
     setTimeout(() => {
         res.status(200).json({
             success: true,
-            toppingsCount,
+            foodCount,
             resPerPage,
-            toppings
+            food
         })
     }, 2000);
 
@@ -68,12 +68,12 @@ exports.getProducts = catchAsyncErrors(async (req, res, next) => {
 //get all products (admin)  => /api/v1/admin/products/
 exports.getAdminProducts = catchAsyncErrors(async (req, res, next) => {
 
-    const toppings = await Toppings.find()
+    const food = await Food.find()
 
 
     res.status(200).json({
         success: true,
-        toppings
+        food
     })
 });
 
@@ -81,22 +81,22 @@ exports.getAdminProducts = catchAsyncErrors(async (req, res, next) => {
 //to get a single product details from /api/v1/product/:id
 
 exports.getSingleProduct = catchAsyncErrors(async (req, res, next) => {
-    const toppings = await Toppings.findById(req.params.id);
+    const food = await Food.findById(req.params.id);
 
-    if (!toppings) {
+    if (!food) {
         return next(new ErrorHandler("Product not found", 404));
     }
 
-    res.status(200).json(toppings)
+    res.status(200).json(food)
 });
 
 
 //to update a product => /api/b1/admin/product/:id
 
 exports.updateProduct = catchAsyncErrors(async (req, res, next) => {
-    let toppings = await Toppings.findById(req.params.id);
+    let food = await Food.findById(req.params.id);
 
-    if (!toppings) {
+    if (!food) {
         return next(new ErrorHandler("Product not found", 404));
     }
 
@@ -109,8 +109,8 @@ exports.updateProduct = catchAsyncErrors(async (req, res, next) => {
     }
     if (images !== undefined) {
         // Deleting images associated with the product
-        for (let i = 0; i < toppings.images.length; i++) {
-            const result = await cloudinary.v2.uploader.destroy(toppings.images[i].public_id)
+        for (let i = 0; i < food.images.length; i++) {
+            const result = await cloudinary.v2.uploader.destroy(food.images[i].public_id)
         }
         let imagesLinks = []
         for (var i = 0; i < images.length; i++) {
@@ -126,14 +126,14 @@ exports.updateProduct = catchAsyncErrors(async (req, res, next) => {
         //if it is a single image then it is a string else it is an array with multiple images 
         req.body.images = imagesLinks
     }
-    toppings = await Toppings.findByIdAndUpdate(req.params.id, req.body, {
+    food = await Food.findByIdAndUpdate(req.params.id, req.body, {
         new: true,
         runValidators: true
     });
 
     res.status(200).json({
         success: true,
-        toppings
+        food
     })
 });
 
@@ -141,18 +141,18 @@ exports.updateProduct = catchAsyncErrors(async (req, res, next) => {
 // Delete Product   =>   /api/v1/admin/product/:id
 exports.deleteProduct = catchAsyncErrors(async (req, res, next) => {
 
-    const toppings = await Toppings.findById(req.params.id);
+    const food = await Food.findById(req.params.id);
 
-    if (!toppings) {
+    if (!food) {
         return next(new ErrorHandler('Product not found', 404));
     }
 
     // Deleting images associated with the product
-    for (let i = 0; i < toppings.images.length; i++) {
-        const result = await cloudinary.v2.uploader.destroy(toppings.images[i].public_id)
+    for (let i = 0; i < food.images.length; i++) {
+        const result = await cloudinary.v2.uploader.destroy(food.images[i].public_id)
     }
 
-    await toppings.remove();
+    await food.remove();
 
     res.status(200).json({
         success: true,

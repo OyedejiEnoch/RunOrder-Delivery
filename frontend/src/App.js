@@ -60,6 +60,11 @@ import ToppingsHome from './components/stores/Toppings';
 import ToppingsList from './components/admin/ToppingsList';
 import NewToppings from './components/admin/NewToppings';
 import UpdateToppings from './components/admin/UpdateToppings';
+import FoodDetails from './components/product/FoodDetails';
+import FoodsHome from './components/stores/Food';
+import NewFood from './components/admin/NewFood';
+import FoodList from './components/admin/FoodList';
+import UpdateFood from './components/admin/UpdateFood';
 
 
 // import { useEffect } from 'react';
@@ -93,6 +98,7 @@ function App() {
           <Route path='/home' element={<Home />} exact />
           <Route path='/drinks' element={<DrinksHome />} exact />
           <Route path='/toppings' element={<ToppingsHome />} exact />
+          <Route path='/Foods' element={<FoodsHome />} exact />
           <Route path='/search/:keyword' element={<Home />} />
         </Routes>
         <div className="container container-fluid homePage">
@@ -102,6 +108,7 @@ function App() {
             <Route path='/product/:id' element={<ProductDetails />} exact />
             <Route path='/drinks/:id' element={<DrinksDetails />} exact />
             <Route path='/toppings/:id' element={<ToppingsDetails />} exact />
+            <Route path='/foods/:id' element={<FoodDetails />} exact />
             <Route path='/cart' element={<Cart />} exact />
             <Route path='/shipping' element={<ProtectedRoute><Shipping /></ProtectedRoute>} />
             <Route path='/order/confirm' element={<ProtectedRoute><ConfirmOrder /></ProtectedRoute>} />
@@ -138,9 +145,14 @@ function App() {
           <Route path='/admin/topping' element={<ProtectedRoute isAdmin={true} ><NewToppings /></ProtectedRoute>} exact />
           <Route path='/admin/toppings' element={<ProtectedRoute isAdmin={true} ><ToppingsList/></ProtectedRoute>} exact />
 
+        <Route path="/admin/food" element={<ProtectedRoute isAdmin={true}><NewFood/> </ProtectedRoute>} exact />
+        <Route path='/admin/foods' element={<ProtectedRoute isAdmin={true}><FoodList/></ProtectedRoute>} />
+
           <Route path='/admin/products/:id' element={<ProtectedRoute isAdmin={true} ><UpdateProduct /></ProtectedRoute>} exact />
           <Route path='/admin/drinks/:id' element={<ProtectedRoute isAdmin={true} ><UpdateDrinks/></ProtectedRoute>} exact />
           <Route path='/admin/toppings/:id' element={<ProtectedRoute isAdmin={true} ><UpdateToppings/></ProtectedRoute>} exact />
+          <Route path='/admin/foods/:id' element={<ProtectedRoute isAdmin={true}> <UpdateFood/></ProtectedRoute>}/>
+
           <Route path='/admin/orders' element={<ProtectedRoute isAdmin={true} ><OrderList /></ProtectedRoute>} exact />
           <Route path='/admin/order/:id' element={<ProtectedRoute isAdmin={true} ><ProcessOrders /></ProtectedRoute>} exact />
           <Route path='/admin/users' element={<ProtectedRoute isAdmin={true} ><UsersList /></ProtectedRoute>} exact />

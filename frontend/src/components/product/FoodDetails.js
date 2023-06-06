@@ -35,7 +35,7 @@ function FoodDetails() {
 
 
     function addToCart() {
-        dispatch(addItemToCart(params.id, quantity, 'toppings'));
+        dispatch(addItemToCart(params.id, quantity, 'foods'));
         toast.success("Item Added to Cart");
     }
 

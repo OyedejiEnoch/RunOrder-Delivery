@@ -56,7 +56,7 @@ function FoodsHome() {
         <Fragment>
 
 
-            <div className="headerHomeToppings">
+            <div className="headerHomeFood">
 
                 <div className="headerCovHome">
                     <h1>Welcome to <span> Run Order </span> Products</h1>

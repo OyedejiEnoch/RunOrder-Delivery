@@ -1,8 +1,10 @@
-const Food = require("../models/food");
+const PeacePark = require("../models/peacePark");
 const ErrorHandler = require("../utils/errorHandler");
 const catchAsyncErrors = require("../middleWares/catchAsyncErrors");
 const APIFeatures = require("../utils/apiFeatures");
 const cloudinary = require("cloudinary");
+
+//Create new product => /api/v1/admin/product/new
 
 exports.newProduct = catchAsyncErrors(async (req, res, next) => {
   let images = [];
@@ -26,64 +28,64 @@ exports.newProduct = catchAsyncErrors(async (req, res, next) => {
   //if it is a single image then it is a string else it is an array with multiple images
   req.body.images = imagesLinks;
   req.body.user = req.user.id;
-  const food = await Food.create(req.body);
+  const peacePark = await PeacePark.create(req.body);
 
   res.status(201).json({
     success: true,
-    food,
+    peacePark,
   });
 });
 
 //get all products  => /api/v1/products/?keyword=
 exports.getProducts = catchAsyncErrors(async (req, res, next) => {
-  const resPerPage = 12;
-  const foodCount = await Food.countDocuments();
+  const resPerPage = 20;
+  const peaceParkCount = await PeacePark.countDocuments();
 
-  const apiFeatures = new APIFeatures(Food.find(), req.query)
+  const apiFeatures = new APIFeatures(PeacePark.find(), req.query)
     .search()
     .filter()
     .pagination(resPerPage);
 
-  const food = await apiFeatures.query;
+  const peacePark = await apiFeatures.query;
 
   setTimeout(() => {
     res.status(200).json({
       success: true,
-      foodCount,
+      peaceParkCount,
       resPerPage,
-      food,
+      peacePark,
     });
   }, 2000);
 });
 
 //get all products (admin)  => /api/v1/admin/products/
 exports.getAdminProducts = catchAsyncErrors(async (req, res, next) => {
-  const food = await Food.find();
+  const peacePark = await PeacePark.find();
 
   res.status(200).json({
     success: true,
-    food,
+    peacePark,
   });
 });
 
 //to get a single product details from /api/v1/product/:id
 
 exports.getSingleProduct = catchAsyncErrors(async (req, res, next) => {
-  const food = await Food.findById(req.params.id);
+  const peacePark = await PeacePark.findById(req.params.id);
 
-  if (!food) {
+  if (!peacePark) {
     return next(new ErrorHandler("Product not found", 404));
   }
 
-  res.status(200).json(food);
+  res.status(200).json(peacePark);
 });
 
 //to update a product => /api/b1/admin/product/:id
 
 exports.updateProduct = catchAsyncErrors(async (req, res, next) => {
-  let food = await Food.findById(req.params.id);
+  let peacePark = await PeacePark.findById(req.params.id);
 
-  if (!food) {
+  if (!peacePark) {
     return next(new ErrorHandler("Product not found", 404));
   }
 
@@ -95,9 +97,9 @@ exports.updateProduct = catchAsyncErrors(async (req, res, next) => {
   }
   if (images !== undefined) {
     // Deleting images associated with the product
-    for (let i = 0; i < food.images.length; i++) {
+    for (let i = 0; i < peacePark.images.length; i++) {
       const result = await cloudinary.v2.uploader.destroy(
-        food.images[i].public_id
+        peacePark.images[i].public_id
       );
     }
     let imagesLinks = [];
@@ -113,33 +115,36 @@ exports.updateProduct = catchAsyncErrors(async (req, res, next) => {
     //if it is a single image then it is a string else it is an array with multiple images
     req.body.images = imagesLinks;
   }
-  food = await Food.findByIdAndUpdate(req.params.id, req.body, {
+
+  peacePark = await PeacePark.findByIdAndUpdate(req.params.id, req.body, {
     new: true,
     runValidators: true,
   });
 
   res.status(200).json({
     success: true,
-    food,
+    peacePark,
   });
 });
 
+//to delete product => /api/v1/admin/product/:id
+
 // Delete Product   =>   /api/v1/admin/product/:id
 exports.deleteProduct = catchAsyncErrors(async (req, res, next) => {
-  const food = await Food.findById(req.params.id);
+  const peacePark = await PeacePark.findById(req.params.id);
 
-  if (!food) {
+  if (!peacePark) {
     return next(new ErrorHandler("Product not found", 404));
   }
 
   // Deleting images associated with the product
-  for (let i = 0; i < food.images.length; i++) {
+  for (let i = 0; i < peacePark.images.length; i++) {
     const result = await cloudinary.v2.uploader.destroy(
-      food.images[i].public_id
+      peacePark.images[i].public_id
     );
   }
 
-  await food.remove();
+  await peacePark.remove();
 
   res.status(200).json({
     success: true,

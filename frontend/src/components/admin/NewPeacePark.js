@@ -2,17 +2,12 @@ import React, { Fragment, useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import MetaData from "../layout/MetaData";
-import {
-  updateFood,
-  getFoodDetails,
-  clearErrors,
-} from "../../action/foodActions";
-import { useNavigate, useParams } from "react-router-dom";
-import { UPDATE_PRODUCTS_RESET } from "../../constants/foodConstants";
+import { newPeacePark, clearErrors } from "../../action/peaceParkActions";
+import { useNavigate } from "react-router-dom";
+import { NEW_PRODUCTS_RESET } from "../../constants/peacePark";
 import Sidebar from "./Sidebar";
 
-function UpdateFood() {
-  let params = useParams();
+function NewPeacePark() {
   const [name, setName] = useState("");
   const [price, setPrice] = useState("");
   const [description, setDescription] = useState("");
@@ -20,7 +15,6 @@ function UpdateFood() {
   const [stock, setStock] = useState(0);
   const [seller, setSeller] = useState("");
   const [images, setImages] = useState([]);
-  const [oldImages, setOldImages] = useState([]);
   const [imagesPreview, setImagesPreview] = useState([]);
 
   const categories = [
@@ -40,44 +34,22 @@ function UpdateFood() {
 
   const dispatch = useDispatch();
   let navigate = useNavigate();
-  const { error, product } = useSelector((state) => state.foodProductDetails);
-  const {
-    loading,
-    error: updateError,
-    isUpdated,
-  } = useSelector((state) => state.foodProduct);
-
-  const productId = params.id;
+  const { loading, error, success } = useSelector(
+    (state) => state.newPeaceParkProduct
+  );
 
   useEffect(() => {
-    if (product && product._id !== productId) {
-      dispatch(getFoodDetails(productId));
-    } else {
-      setName(product.name);
-      setPrice(product.price);
-      setCategory(product.category);
-      setDescription(product.description);
-      setStock(product.stock);
-      setSeller(product.seller);
-      setOldImages(product.images);
-    }
-
     if (error) {
       toast.error(error);
       dispatch(clearErrors());
     }
 
-    if (updateError) {
-      toast.error(updateError);
-      dispatch(clearErrors());
+    if (success) {
+      navigate("/admin/peaceParks");
+      toast.success("product created successfully");
+      dispatch({ type: NEW_PRODUCTS_RESET });
     }
-
-    if (isUpdated) {
-      navigate("/admin/foods");
-      toast.success("product updated successfully");
-      dispatch({ type: UPDATE_PRODUCTS_RESET });
-    }
-  }, [dispatch, error, isUpdated, updateError, product, productId]);
+  }, [dispatch, error, success]);
 
   function handleSubmit(event) {
     event.preventDefault();
@@ -94,7 +66,7 @@ function UpdateFood() {
       formData.append("images", image);
     });
 
-    dispatch(updateFood(product._id, formData));
+    dispatch(newPeacePark(formData));
   }
 
   // to remove the stock seller
@@ -104,7 +76,6 @@ function UpdateFood() {
 
     setImagesPreview([]);
     setImages([]);
-    setOldImages([]);
 
     files.forEach((file) => {
       const reader = new FileReader();
@@ -122,7 +93,7 @@ function UpdateFood() {
 
   return (
     <Fragment>
-      <MetaData title={"Update Products"} />
+      <MetaData title={"New Products"} />
       <div className="row">
         <div className="col-12 col-md-2">
           <div className="sideBar">
@@ -173,7 +144,7 @@ function UpdateFood() {
                 encType="multipart/form-data"
                 onSubmit={handleSubmit}
               >
-                <h1 className="mb-4">Update Product</h1>
+                <h1 className="mb-4">New Product</h1>
 
                 <div className="form-group">
                   <label htmlFor="name_field">Name</label>
@@ -261,17 +232,6 @@ function UpdateFood() {
                       Choose Images
                     </label>
                   </div>
-                  {oldImages &&
-                    oldImages.map((img) => {
-                      <img
-                        key={img}
-                        src={img.url}
-                        alt={img.url}
-                        className="mt-3 me-2"
-                        width="55"
-                        height="52"
-                      />;
-                    })}
 
                   {imagesPreview.map((img) => (
                     <img
@@ -291,7 +251,7 @@ function UpdateFood() {
                   className="btn btn-block py-3"
                   disabled={loading ? true : false}
                 >
-                  Update
+                  CREATE
                 </button>
               </form>
             </div>
@@ -302,4 +262,4 @@ function UpdateFood() {
   );
 }
 
-export default UpdateFood;
+export default NewPeacePark;

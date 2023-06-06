@@ -3,12 +3,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import MetaData from "../layout/MetaData";
 import {
-  updateFood,
-  getFoodDetails,
+  updatePeacePark,
+  getPeaceParkDetails,
   clearErrors,
-} from "../../action/foodActions";
+} from "../../action/peaceParkActions";
 import { useNavigate, useParams } from "react-router-dom";
-import { UPDATE_PRODUCTS_RESET } from "../../constants/foodConstants";
+import { UPDATE_PRODUCTS_RESET } from "../../constants/peacePark";
 import Sidebar from "./Sidebar";
 
 function UpdateFood() {
@@ -40,18 +40,20 @@ function UpdateFood() {
 
   const dispatch = useDispatch();
   let navigate = useNavigate();
-  const { error, product } = useSelector((state) => state.foodProductDetails);
+  const { error, product } = useSelector(
+    (state) => state.peaceParkProductDetails
+  );
   const {
     loading,
     error: updateError,
     isUpdated,
-  } = useSelector((state) => state.foodProduct);
+  } = useSelector((state) => state.peaceParkProduct);
 
   const productId = params.id;
 
   useEffect(() => {
     if (product && product._id !== productId) {
-      dispatch(getFoodDetails(productId));
+      dispatch(getPeaceParkDetails(productId));
     } else {
       setName(product.name);
       setPrice(product.price);
@@ -73,7 +75,7 @@ function UpdateFood() {
     }
 
     if (isUpdated) {
-      navigate("/admin/foods");
+      navigate("/admin/peaceParks");
       toast.success("product updated successfully");
       dispatch({ type: UPDATE_PRODUCTS_RESET });
     }
@@ -94,7 +96,7 @@ function UpdateFood() {
       formData.append("images", image);
     });
 
-    dispatch(updateFood(product._id, formData));
+    dispatch(updatePeacePark(product._id, formData));
   }
 
   // to remove the stock seller

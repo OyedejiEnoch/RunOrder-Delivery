@@ -1,23 +1,20 @@
-import React, { useEffect,Fragment } from "react";
-import 'animate.css';
+import React, { useEffect, Fragment } from "react";
+import "animate.css";
 import { Link } from "react-router-dom";
-import "./LandingPage.css"
+import "./LandingPage.css";
 import { Carousel } from "react-bootstrap";
-import 'animate.css';
-
+import "animate.css";
 
 function LandingPage() {
+  useEffect(() => {
+    window.onload = function () {
+      window.scrollTo(0, 0);
+    };
+  }, []);
 
-    useEffect(()=>{
-        window.onload = function() {
-            window.scrollTo(0, 0);
-          };
-    }, [])
-
-
-    return (
-        <Fragment>
-        {/* <div>
+  return (
+    <Fragment>
+      {/* <div>
             <Carousel pause="hover">
                  
                  <Carousel.Item className="carousel">
@@ -29,63 +26,63 @@ function LandingPage() {
              </Carousel>
         </div> */}
 
+      <div className="container">
+        <div className="landingPageCards">
+          <div className="landingPageCard animate__animated animate__fadeInLeft">
+            <div className="landingBackground"></div>
+            <span className="landingCardTitle">Food</span>
+            <div className="landingPageButton">
+              <Link to="/foods" style={{ textDecoration: "none" }}>
+                <button>Go to store</button>
+              </Link>
+            </div>
+          </div>
+          {/* link to =/home */}
 
-                <div className="container">
-                <div className="landingPageCards">
+          <div className="landingPageCard animate__animated animate__fadeInUp">
+            <div className="landingBackground2"></div>
 
-                <div className="landingPageCard animate__animated animate__fadeInLeft" >
-                    <div className="landingBackground">
-                    </div>
-                    <span className="landingCardTitle" >Food</span>
-                        <div className="landingPageButton">
-                        <Link to="/foods" style={{textDecoration:"none"}} >
-                            <button>Go to store</button>
-                            </Link>
-                        </div> 
-                    </div>
-                    {/* link to =/home */}
+            <span className="landingCardTitle">Drinks</span>
+            <div className="landingPageButton">
+              <Link to="/drinks" style={{ textDecoration: "none" }}>
+                <button>Go to store</button>
+              </Link>
+            </div>
+          </div>
 
-                    <div className="landingPageCard animate__animated animate__fadeInUp">
-                    <div className="landingBackground2">
-                    </div>
+          <div className="landingPageCard animate__animated animate__fadeInUp">
+            <div className="landingBackground3"></div>
+            <span className="landingCardTitle">Toppings</span>
+            <div className="landingPageButton">
+              <Link to="/toppings" style={{ textDecoration: "none" }}>
+                <button>Go to store</button>
+              </Link>
+            </div>
+          </div>
 
-                        <span className="landingCardTitle" >Drinks</span>
-                        <div className="landingPageButton">
-                        <Link to="/drinks" style={{textDecoration:"none"}} >
-                            <button>Go to store</button>
-                            </Link>
-                        </div> 
-                    </div>
+          <div className="landingPageCard animate__animated animate__fadeInUp">
+            <div className="landingBackground5"></div>
+            <span className="landingCardTitle">PeacePark</span>
+            <div className="landingPageButton">
+              <Link to="/peacePark" style={{ textDecoration: "none" }}>
+                <button>Go to store</button>
+              </Link>
+            </div>
+          </div>
 
-                    <div className="landingPageCard animate__animated animate__fadeInUp">
-                    <div className="landingBackground3">
-                    </div>
-                    <span className="landingCardTitle" >Toppings</span>
-                        <div className="landingPageButton">
-                        <Link to="/toppings" style={{textDecoration:"none"}} >
-                            <button>Go to store</button>
-                            </Link>
-                        </div> 
-                    </div>
+          <div className="landingPageCard animate__animated animate__fadeInUp">
+            <div className="landingBackground4"></div>
+            <span className="landingCardTitle">RUNSA WEEK</span>
+            <div className="landingPageButton">
+              <Link to="" style={{ textDecoration: "none" }}>
+                <button disabled={true}>Coming Soon</button>
+              </Link>
+            </div>
+          </div>
+        </div>
+      </div>
 
-                    <div className="landingPageCard animate__animated animate__fadeInUp">
-                    <div className="landingBackground4">
-                    </div>
-                    <span className="landingCardTitle" >RUNSA WEEK</span>
-                        <div className="landingPageButton">
-                        <Link to="" style={{textDecoration:"none"}} >
-                            <button disabled={true}>Coming Soon</button>
-                            </Link>
-                        </div> 
-                    </div>
-
-
-
-                    </div>
-                </div>
-
-
-           {/* <section className="descSection">
+      {/* <section className="descSection">
            <Carousel pause="hover">
                  
                     <Carousel.Item className="carousel">
@@ -115,8 +112,7 @@ function LandingPage() {
                 </Carousel>
            </section> */}
 
-
-{/* <div className="landingPage">
+      {/* <div className="landingPage">
                         <div className="landingText animate__animated animate__fadeInLeft">
                             <h3>Welcome to</h3>
                             <h1>RunOrder</h1>
@@ -128,12 +124,8 @@ function LandingPage() {
                             <img className="img-fluid" src="./images/undraw_shopping_app_flsj.svg" alt="" />
                         </div>
                     </div> */}
-
-
-        </Fragment>
-
-    )
+    </Fragment>
+  );
 }
-
 
 export default LandingPage;
